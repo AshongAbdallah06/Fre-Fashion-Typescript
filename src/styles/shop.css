@@ -1,0 +1,74 @@
+.heading {
+	width: 100%;
+	background-color: black;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 2rem 0;
+}
+
+.heading h1 {
+	font-size: 5rem;
+}
+
+.shop.section {
+	display: flex;
+}
+
+aside {
+	padding-right: 3rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.title-text {
+	position: relative;
+	white-space: nowrap;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+h3 {
+	font-size: 1.4rem;
+	font-weight: normal;
+	display: inline-block;
+}
+
+.line {
+	display: inline-block;
+	width: 50%;
+	margin-left: 1rem;
+	margin-top: 0.5rem;
+	height: 0.01rem;
+	background-color: rgb(224, 224, 224);
+}
+
+.about-text {
+	margin: 2rem 0;
+	color: rgb(145, 145, 151);
+	font-weight: normal;
+	font-size: 0.9rem;
+	line-height: 1.3rem;
+}
+
+.categories-list-items {
+	display: flex;
+	flex-direction: column;
+}
+
+.list-items {
+	color: rgb(145, 145, 151);
+	font-weight: normal;
+	padding-top: 1.5rem;
+	font-size: 1.3rem;
+}
+
+.list-items:hover {
+	color: #000;
+}
+
+.items-row.shop {
+	grid-template-columns: repeat(2, 1fr);
+}

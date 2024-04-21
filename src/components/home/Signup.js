@@ -2,7 +2,7 @@ import React from "react";
 
 const Signup = () => {
 	return (
-		<section className="section">
+		<section>
 			<div className="subscribe">
 				<p className="subscribe-text">Sign up to our mailing list</p>
 				<input

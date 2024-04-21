@@ -1,18 +1,19 @@
-import React from "react";
+// import React, { useContext } from "react";
 import logo1 from "../../images/logo-1.png";
 import logo2 from "../../images/logo-2.png";
 import logo3 from "../../images/logo-3.png";
 import logo4 from "../../images/logo-4.png";
 import logo5 from "../../images/logo-5.png";
 import logo6 from "../../images/logo-6.png";
+// import { AppContext } from "../../App";
+import Heading from "./Heading";
 
 const OurBrands = () => {
+	// const { heading } = useContext(AppContext);
+
 	return (
 		<section className="margin-section">
-			<div className="top-title">
-				<h2>Our Brands</h2>
-				<div className="divider"></div>
-			</div>
+			<Heading heading="Our Brands" />
 
 			<div className="logo-wrapper">
 				<img

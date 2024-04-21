@@ -1,0 +1,27 @@
+.contact.section {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+form {
+	display: block;
+	width: 50%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.text-field {
+	width: 100%;
+	float: none;
+	border: 1px solid rgb(237, 237, 237);
+	padding: 1rem 0;
+	padding-left: 1.4rem;
+}
+
+/* Send Message Button */
+.send-message {
+	width: 100%;
+	height: 2.5rem;
+}
