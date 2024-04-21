@@ -1,0 +1,315 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Playfair Display", serif;
+}
+
+.App {
+	padding: 2rem 3rem;
+}
+
+header {
+	margin-bottom: 2rem;
+}
+
+.top-banner {
+	display: flex;
+	justify-content: space-between;
+}
+
+.logo {
+	height: 4rem;
+	cursor: pointer;
+}
+
+.right-section {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	width: 22rem;
+}
+
+.container {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.nav-icons {
+	height: 1.5rem;
+}
+
+.container::after {
+	margin-left: 0.2rem;
+	color: gray;
+	font-size: 0.9rem;
+}
+
+#phone::after {
+	content: "+1 800 800 00";
+}
+
+#mail::after {
+	content: "mail@fre.io";
+}
+
+#cart::after {
+	content: "50";
+	font-size: 0.7rem;
+	width: 1.4rem;
+	height: 1.4rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0.1em;
+	background-color: black;
+	color: white;
+	text-align: center;
+	border-radius: 100%;
+}
+
+.nav-menu {
+	text-align: center;
+}
+
+a {
+	text-decoration: none;
+	color: #000;
+}
+
+.nav-link {
+	margin-right: 1rem;
+}
+
+.nav-link:nth-child(2)::after {
+	content: url("../images/icon-arrow-down.svg");
+	margin-left: 0.3rem;
+}
+
+.banner {
+	background-color: rgb(81, 81, 87);
+	background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+		url("../images/banner.jpg");
+	height: 60rem;
+	background-size: auto, cover;
+	background-repeat: repeat, no-repeat;
+	background-attachment: scroll, fixed;
+	background-position: 0 0, 50% 50%;
+}
+
+.align-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 100%;
+	text-align: center;
+}
+
+.heading-banner {
+	font-size: 4rem;
+	font-weight: normal;
+	color: white;
+	line-height: 6rem;
+	width: 95%;
+}
+
+.get-started {
+	color: white;
+	background-color: rgb(33, 33, 39);
+	font-family: Poppins, serif;
+	cursor: pointer;
+	font-weight: 500;
+	border: none;
+	padding: 1rem 1.4rem;
+}
+
+.categories {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	column-gap: 1.5rem;
+	margin-top: 2.5rem;
+}
+
+.category {
+	cursor: pointer;
+	background-color: rgb(17, 17, 17);
+	margin: 0;
+}
+
+.category-title {
+	color: white;
+	text-align: right;
+	padding-top: 3rem;
+	padding-right: 1.4rem;
+	padding-bottom: 1.4rem;
+	font-size: 2rem;
+}
+
+.section {
+	margin-top: 7.5rem;
+}
+
+.top-title {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin-bottom: 4rem;
+}
+
+h2 {
+	font-size: 2.5rem;
+	font-weight: normal;
+	margin-bottom: 1rem;
+}
+
+.divider {
+	height: 0.05rem;
+	width: 4rem;
+	background-color: black;
+}
+
+.items-row {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	column-gap: 1.5rem;
+}
+
+.product-item {
+	margin-bottom: 5rem;
+	text-align: center;
+	color: rgb(33, 33, 39);
+	text-align: center;
+	opacity: 0.8;
+	cursor: pointer;
+	text-decoration: none;
+	transition: opacity 0.5s ease 0s;
+}
+
+.product-item:hover {
+	opacity: 1;
+}
+
+.product-image {
+	margin-bottom: 1.5rem;
+}
+
+.product-image img {
+	max-width: 100%;
+	vertical-align: middle;
+	display: inline-block;
+}
+
+.product-name {
+	font-size: 1.2rem;
+	line-height: 1.5rem;
+	font-weight: 500;
+	margin: 0.4rem 0;
+	height: 4rem;
+}
+
+.price {
+	color: rgb(189, 189, 195);
+	font-size: 1.4rem;
+	line-height: 1.8rem;
+	margin: 0.4rem 0;
+}
+
+.margin-section {
+	margin-top: 10rem;
+}
+
+.logo-wrapper {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	padding: 0 1rem;
+}
+
+.client-logo {
+	max-width: 4.4rem;
+	vertical-align: middle;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.subscribe {
+	padding: 4rem 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-top: 1px solid rgb(237, 237, 237);
+}
+
+.subscribe-text {
+	margin-right: 1.4rem;
+	margin-bottom: 0;
+	font-size: 1rem;
+	font-style: italic;
+	color: rgb(145, 145, 151);
+	font-weight: 500;
+}
+
+.signup-input {
+	width: 35%;
+	height: 3.3rem;
+	margin-left: 1.4rem;
+	font-size: 1rem;
+	margin-bottom: 0;
+	float: left;
+	padding-left: 1.4rem;
+	border: 1px solid rgb(237, 237, 237);
+}
+
+.submit-button {
+	width: 15%;
+	height: 3.3rem;
+	padding-right: 1.4rem;
+	padding-left: 1.4rem;
+	float: left;
+	background-color: rgb(33, 33, 39);
+	font-weight: 500;
+	color: white;
+	font-family: Arial;
+	cursor: pointer;
+	border: none;
+}
+
+footer {
+	background-color: rgb(33, 33, 39);
+	padding: 3.2rem 2rem 2rem;
+}
+
+.flex-row {
+	display: flex;
+	justify-content: space-between;
+}
+
+.flex-row .left,
+.footer-right {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.nav-link.in-footer {
+	color: white;
+	font-family: Poppins, Arial;
+	text-decoration: none;
+	font-size: 0.8rem;
+	margin: 0;
+	margin-right: 0.5rem;
+	cursor: pointer;
+}
+
+.social-media-icons {
+	height: 0.8rem;
+	cursor: pointer;
+	margin-right: 0.5rem;
+	vertical-align: middle;
+	display: inline-block;
+}

@@ -1,38 +1,57 @@
-import './App.css';
-import Generate from './Generate';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { createContext } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Home from './Home';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import "./styles/App.css";
+import Content from "./components/home/Content";
+import Footer from "./components/home/Footer";
+import Header from "./components/home/Header";
+import Contact from "./components/contact/Contact";
+import Shop from "./components/shop/Shop";
+import Accessories from "./components/shop/Accessories";
+import Jewelry from "./components/shop/Jewelry";
+import Bags from "./components/shop/Bags";
 
-export const AppContext = createContext(); 
+// export const AppContext = createContext();
 
 function App() {
+	return (
+		<div className="App">
+			<Router>
+				<Header />
 
-    const client = new QueryClient({
-        defaultOptions: {
-            queries: {
-                refetchOnWindowFocus: false
-            }
-        }
-    });
+				<Routes>
+					<Route
+						path="/"
+						element={<Content />}
+					/>
+					<Route
+						path="/shop"
+						element={<Shop />}
+					/>
+					<Route
+						path="/shop/accessories"
+						element={<Accessories />}
+					/>
+					<Route
+						path="/shop/jewelry"
+						element={<Jewelry />}
+					/>
+					<Route
+						path="/shop/bags"
+						element={<Bags />}
+					/>
+					<Route
+						path="/contact"
+						element={<Contact />}
+					/>
+					<Route
+						path="*"
+						element={<h1>404 PAGE CANNOT BE FOUND</h1>}
+					/>
+				</Routes>
 
-    return (
-        <div className="App">
-            <QueryClientProvider client={client}>
-                <AppContext.Provider>
-                    <Router>
-                        <Link to={'/'}>Home</Link> &nbsp;
-                        <Link to={'/generate'}>Generate</Link>
-                        <Routes>
-                            <Route path='/' element={<Home />}/>
-                            <Route path='/generate' element={<Generate />}/>
-                        </Routes>
-                    </Router>
-                </AppContext.Provider>
-            </QueryClientProvider>
-        </div>
-    );
+				<Footer />
+			</Router>
+		</div>
+	);
 }
 
 export default App;
