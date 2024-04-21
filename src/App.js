@@ -1,18 +1,18 @@
-import React, { createContext } from "react";
+import React, { createContext, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./styles/general.css";
 import "./styles/App.css";
-import "./styles/shop.css";
-import "./styles/contact.css";
 import Content from "./components/home/Content";
-import Footer from "./components/home/Footer";
-import Header from "./components/home/Header";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 import Contact from "./components/contact/Contact";
 import Shop from "./components/shop/Shop";
 import Accessories from "./components/shop/Accessories";
 import Jewelry from "./components/shop/Jewelry";
 import Bags from "./components/shop/Bags";
 import Hats from "./components/shop/Hats";
+import Item from "./components/selected-item/Item";
+import formatCurrency from "./utils/money";
 
 export const AppContext = createContext();
 
@@ -20,9 +20,18 @@ function App() {
 	const title = "";
 	const heading = "";
 
+	const [product, setProduct] = useState({
+		name: null,
+		price: null,
+		product_image: null,
+		type: null,
+	});
+
 	return (
 		<div className="App">
-			<AppContext.Provider value={{ title, heading }}>
+			<AppContext.Provider
+				value={{ title, heading, product, setProduct }}
+			>
 				<Router>
 					<Header />
 
@@ -35,6 +44,25 @@ function App() {
 							path="/shop"
 							element={<Shop />}
 						/>
+						{product.name !== null && (
+							<>
+								<Route
+									path={`/${product.name
+										.replaceAll(" ", "-")
+										.toLowerCase()}`}
+									element={
+										<Item
+											productName={product.name}
+											productImage={product.product_image}
+											productPrice={formatCurrency(
+												product.price
+											)}
+											productType={product.type}
+										/>
+									}
+								/>
+							</>
+						)}
 						<Route
 							path="/shop/accessories"
 							element={<Accessories />}

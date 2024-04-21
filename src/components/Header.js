@@ -1,8 +1,8 @@
 import React from "react";
-import logo from "../../images/fre-logo.png";
-import phone from "../../images/phone.png";
-import newPost from "../../images/new-post.png";
-import cart from "../../images/shopping-cart.svg";
+import logo from "../images/fre-logo.png";
+import phone from "../images/phone.png";
+import newPost from "../images/new-post.png";
+import cart from "../images/shopping-cart.svg";
 import { Link } from "react-router-dom";
 
 const Header = () => {

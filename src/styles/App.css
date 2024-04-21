@@ -26,16 +26,6 @@
 	width: 95%;
 }
 
-.get-started {
-	color: white;
-	background-color: rgb(33, 33, 39);
-	font-family: Poppins, serif;
-	cursor: pointer;
-	font-weight: 500;
-	border: none;
-	padding: 1rem 1.4rem;
-}
-
 .categories {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -47,9 +37,6 @@
 	cursor: pointer;
 	background-color: rgb(17, 17, 17);
 	margin: 0;
-}
-
-.category-title {
 	color: white;
 	text-align: right;
 	padding-top: 3rem;
@@ -177,14 +164,4 @@ h2 {
 
 .submit-button {
 	width: 15%;
-	height: 3.3rem;
-	padding-right: 1.4rem;
-	padding-left: 1.4rem;
-	float: left;
-	background-color: rgb(33, 33, 39);
-	font-weight: 500;
-	color: white;
-	font-family: Poppins;
-	cursor: pointer;
-	border: none;
 }

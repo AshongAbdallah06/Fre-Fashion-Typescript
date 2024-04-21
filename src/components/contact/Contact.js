@@ -2,6 +2,7 @@ import React from "react";
 import Signup from "../home/Signup";
 import Heading from "../home/Heading";
 import Form from "./Form";
+import "../../styles/contact.css";
 
 const Contact = ({ title = "Contact" }) => {
 	return (

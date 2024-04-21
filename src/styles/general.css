@@ -90,6 +90,19 @@ a {
 	margin-left: 0.3rem;
 }
 
+button {
+	height: 3.3rem;
+	padding-right: 1.4rem;
+	padding-left: 1.4rem;
+	float: left;
+	color: white;
+	background-color: rgb(33, 33, 39);
+	font-family: Poppins;
+	font-weight: 500;
+	cursor: pointer;
+	border: none;
+}
+
 /* Footer */
 footer {
 	background-color: rgb(33, 33, 39);

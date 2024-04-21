@@ -1,6 +1,7 @@
 import OurBrands from "../home/OurBrands";
 import Aside from "./Aside";
 import ShopItems from "./ShopItems";
+import "../../styles/shop.css";
 
 const Shop = ({ title = "Shop" }) => {
 	return (

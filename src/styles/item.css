@@ -1,0 +1,52 @@
+aside.item {
+	width: 50%;
+	margin-right: 3rem;
+}
+
+.item.section {
+	display: flex;
+	min-height: 35rem;
+}
+
+.item.section .right {
+	width: 50%;
+}
+
+.heading .product-title {
+	text-align: center;
+	font-size: 3rem;
+}
+
+.item-image {
+	width: 100%;
+	height: 400px;
+	object-fit: cover;
+}
+
+.top-margin {
+	display: flex;
+	flex-direction: column;
+	margin-top: 3.5rem;
+}
+
+.quantity-label {
+	color: rgb(145, 145, 151);
+	font-weight: 400;
+}
+
+.quantity-input {
+	background-color: rgb(250, 250, 250);
+	border: 1px solid rgb(221, 221, 221);
+	border-radius: 0.2rem;
+	display: block;
+	height: 38px;
+	line-height: 20px;
+	margin: 0.8rem 0;
+	padding: 8px 6px 8px 12px;
+	width: 60px;
+	margin-bottom: 0.4rem;
+}
+
+.add-to-cart {
+	margin-bottom: 1rem;
+}

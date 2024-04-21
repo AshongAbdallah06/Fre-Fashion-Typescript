@@ -8,20 +8,20 @@ const Categories = () => {
 				to={"/shop/accessories"}
 				className="category"
 			>
-				<p className="category-title">Accessories</p>
+				Accessories
 			</Link>
 
 			<Link
 				to={"/shop/jewelry"}
 				className="category"
 			>
-				<p className="category-title">Jewelry</p>
+				Jewelry
 			</Link>
 			<Link
 				to={"/shop/bags"}
 				className="category"
 			>
-				<p className="category-title">Bags</p>
+				Bags
 			</Link>
 		</section>
 	);
