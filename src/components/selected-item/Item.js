@@ -9,6 +9,7 @@ const Item = ({
 	productPrice,
 	productImage,
 	productType,
+	productQuantity,
 	title = productName && productName,
 }) => {
 	return (
@@ -27,7 +28,12 @@ const Item = ({
 						productType={productType}
 					/>
 
-					<PurchaseForm />
+					<PurchaseForm
+						productName={productName}
+						productPrice={productPrice}
+						productImage={productImage}
+						productQuantity={productQuantity}
+					/>
 				</div>
 			</section>
 		</div>

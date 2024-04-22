@@ -6,17 +6,13 @@ import formatCurrency from "../utils/money";
 
 const SharedItems = () => {
 	const { items } = useProducts();
-	const { product, setProduct } = useContext(AppContext);
-
-	useEffect(() => {
-		console.log(product);
-	}, [product]);
+	const { setProduct, itemQuantity } = useContext(AppContext);
 
 	return (
 		<>
 			{items.map((item) => (
 				<Link
-					to={`/${item.name.replaceAll(" ", "-").toLowerCase()}`}
+					to={`/shop/${item.name.replaceAll(" ", "-").toLowerCase()}`}
 					className="product-item"
 					key={item.id}
 					onClick={() => {
@@ -24,6 +20,7 @@ const SharedItems = () => {
 							name: item.name,
 							price: item.price,
 							product_image: item.image,
+							quantity: itemQuantity,
 							type: item.type,
 						});
 					}}

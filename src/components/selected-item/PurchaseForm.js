@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { AppContext } from "../../App";
 
-const PurchaseForm = () => {
+const PurchaseForm = ({
+	productName,
+	productPrice,
+	productImage,
+	productQuantity,
+}) => {
+	const { handleAddToCart, itemQuantity, setItemQuantity } =
+		useContext(AppContext);
+
+	const [clicked, setClicked] = useState(false);
+
 	return (
 		<>
 			<div className="top-margin">
@@ -11,7 +22,8 @@ const PurchaseForm = () => {
 					Quantity
 				</label>
 				<input
-					defaultValue={0}
+					onChange={(e) => setItemQuantity(e.target.value)}
+					value={itemQuantity}
 					id="quantity"
 					type="number"
 					max={999}
@@ -19,7 +31,24 @@ const PurchaseForm = () => {
 					className="quantity-input"
 				/>
 				<div>
-					<button className="add-to-cart">Add to Cart</button>
+					<button
+						className="add-to-cart"
+						onClick={() => {
+							handleAddToCart(
+								productName,
+								productImage,
+								productPrice,
+								itemQuantity
+							);
+
+							setClicked(true);
+							setTimeout(() => {
+								setClicked(false);
+							}, 2000);
+						}}
+					>
+						{clicked ? "Adding to Cart" : "Add to Cart"}
+					</button>
 				</div>
 				<div>
 					<button>Buy now</button>

@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../images/fre-logo.png";
 import phone from "../images/phone.png";
 import newPost from "../images/new-post.png";
 import cart from "../images/shopping-cart.svg";
 import { Link } from "react-router-dom";
+import CartInfoDropdown from "./cart/CartInfoDropdown";
+import { AppContext } from "../App";
 
 const Header = () => {
+	const { cartItems } = useContext(AppContext);
+	const { cartDropdown, setCartDropdown } = useContext(AppContext);
 	return (
 		<header>
+			{cartDropdown && <CartInfoDropdown />}
+
 			<nav className="top-banner">
 				<nav>
 					<img
@@ -39,6 +45,7 @@ const Header = () => {
 						/>
 					</div>
 					<div
+						onClick={() => setCartDropdown(!cartDropdown)}
 						className="container"
 						id="cart"
 					>
@@ -47,6 +54,7 @@ const Header = () => {
 							alt="cart"
 							className="nav-icons"
 						/>
+						<p className="cartlength">{cartItems.length}</p>
 					</div>
 				</nav>
 			</nav>
