@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { AppContext } from "../../App";
 
 const PurchaseForm = ({
@@ -7,7 +7,7 @@ const PurchaseForm = ({
 	productImage,
 	productQuantity,
 }) => {
-	const { handleAddToCart, itemQuantity, setItemQuantity } =
+	const { handleAddToCart, itemQuantity, setItemQuantity, setCartDropdown } =
 		useContext(AppContext);
 
 	const [clicked, setClicked] = useState(false);
@@ -44,7 +44,15 @@ const PurchaseForm = ({
 							setClicked(true);
 							setTimeout(() => {
 								setClicked(false);
+								window.scrollTo({
+									top: 0,
+									behavior: "smooth",
+								});
 							}, 2000);
+
+							setTimeout(() => {
+								setCartDropdown(true);
+							}, 2200);
 						}}
 					>
 						{clicked ? "Adding to Cart" : "Add to Cart"}

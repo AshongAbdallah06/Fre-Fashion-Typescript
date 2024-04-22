@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
-import sneakers from "../../images/nike-lunar-force-1-duckboot.jpeg";
 import { AppContext } from "../../App";
-import formatCurrency from "../../utils/money";
 
 const CartList = () => {
 	const { cartItems } = useContext(AppContext);

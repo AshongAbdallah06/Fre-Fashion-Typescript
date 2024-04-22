@@ -14,7 +14,6 @@ import Hats from "./components/shop/Hats";
 import Item from "./components/selected-item/Item";
 import Checkout from "./components/checkout/Checkout";
 import formatCurrency from "./utils/money";
-import nike from "./images/nike-lunar-force-1-duckboot.jpeg";
 
 export const AppContext = createContext();
 

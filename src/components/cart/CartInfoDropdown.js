@@ -7,10 +7,10 @@ import PayOptions from "./PayOptions";
 import { AppContext } from "../../App";
 
 const CartInfoDropdown = () => {
-	const { cartItems } = useContext(AppContext);
+	const { cartItems, cartDropdown } = useContext(AppContext);
 
 	return (
-		<div className="cart-dropdown-wrapper">
+		<div className={`cart-dropdown-wrapper ${cartDropdown && "animation"}`}>
 			<CartHeader />
 
 			<section className="cart-item-wrapper">
