@@ -8,29 +8,29 @@ const Sidebar = () => {
 			</div>
 
 			<div className="block-content">
-				<div class="summary-line-item">
+				<div className="summary-line-item">
 					<div>Subtotal:</div>
-					<div class="total-price">$ 341.00 USD</div>
+					<div className="total-price">$ 341.00 USD</div>
 				</div>
 
-				<div class="summary-line-item">
+				<div className="summary-line-item">
 					<div>Flat Rate:</div>
-					<div class="total-price">$ 18.90 USD</div>
+					<div className="total-price">$ 18.90 USD</div>
 				</div>
 
-				<div class="summary-line-item">
+				<div className="summary-line-item">
 					<div>Total:</div>
-					<div class="text-block-2">$ 489.20 USD</div>
-					{/* <div class="total-price">$ 341.00 USD</div> */}
+					<div className="text-block-2">$ 489.20 USD</div>
+					{/* <div className="total-price">$ 341.00 USD</div> */}
 				</div>
 			</div>
 
-			<div class="discounts">
-				<label class="discounts-label">Discount Code</label>
+			<div className="discounts">
+				<label className="discounts-label">Discount Code</label>
 
 				<div className="flex">
 					<input className="discounts-input" />
-					<button class="discounts-button">Apply</button>
+					<button className="discounts-button">Apply</button>
 				</div>
 			</div>
 

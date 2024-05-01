@@ -3,7 +3,7 @@ import Label from "./Label";
 
 const Countries = () => {
 	return (
-		<>
+		<div>
 			<Label label={"Country *"} />
 			<select className="checkout-selector">
 				<option value="AF">Afghanistan</option>
@@ -254,7 +254,7 @@ const Countries = () => {
 				<option value="ZM">Zambia</option>
 				<option value="ZW">Zimbabwe</option>
 			</select>
-		</>
+		</div>
 	);
 };
 

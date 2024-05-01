@@ -9,7 +9,7 @@
 	box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
 }
 
-form div {
+.cont {
 	display: flex;
 	flex-direction: column;
 	margin-top: 1rem;

@@ -82,6 +82,15 @@ function App() {
 		localStorage.setItem("product", JSON.stringify(product));
 	}, [product]);
 
+	const [shippingAddress, setShippingAddress] = useState({
+		name: null,
+		streetAddress: null,
+		streetAddress2: null,
+		city: null,
+		state: null,
+		postalCode: null,
+	});
+
 	return (
 		<div className="App">
 			{/* <Login /> */}
@@ -100,6 +109,8 @@ function App() {
 					itemQuantity,
 					setItemQuantity,
 					subtotal,
+					shippingAddress,
+					setShippingAddress,
 				}}
 			>
 				<Router>

@@ -11,7 +11,10 @@ const Items = () => {
 
 			<fieldset className="block-content">
 				{cartItems.map((item) => (
-					<div className="order-item">
+					<div
+						className="order-item"
+						key={item.itemId}
+					>
 						<img
 							src={item.itemImage}
 							alt="item"

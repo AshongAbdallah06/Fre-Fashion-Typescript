@@ -26,14 +26,14 @@ const Login = () => {
 				onSubmit={handleSubmit(onSubmit)}
 			>
 				<h1>Login</h1>
-				<div>
+				<div className="cont">
 					<label htmlFor="username">Username</label>
 					<input
 						type="text"
 						{...register("username")}
 					/>
 				</div>
-				<div>
+				<div className="cont">
 					<label htmlFor="password">Password</label>
 					<input
 						type="password"
