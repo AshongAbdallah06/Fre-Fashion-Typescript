@@ -1,6 +1,21 @@
 import React from "react";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
 
 const Sidebar = () => {
+	const schema = yup.object().shape({
+		discount: yup.string().required(),
+	});
+
+	const { register, handleSubmit } = useForm({
+		resolver: yupResolver(schema),
+	});
+
+	const onSubmit = (data) => {
+		console.log(data);
+	};
+
 	return (
 		<div className="layout-sidebar">
 			<div className="block-header">
@@ -28,10 +43,16 @@ const Sidebar = () => {
 			<div className="discounts">
 				<label className="discounts-label">Discount Code</label>
 
-				<div className="flex">
-					<input className="discounts-input" />
+				<form
+					onSubmit={handleSubmit(onSubmit)}
+					className=" checkout-form flex"
+				>
+					<input
+						className="discounts-input"
+						{...register("discount")}
+					/>
 					<button className="discounts-button">Apply</button>
-				</div>
+				</form>
 			</div>
 
 			<button className="place-order">Place Order</button>

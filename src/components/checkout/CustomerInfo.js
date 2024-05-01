@@ -6,10 +6,14 @@ import * as yup from "yup";
 
 const CustomerInfo = () => {
 	const schema = yup.object().shape({
-		email: yup.string().email().required(),
+		email: yup.string().email("Please enter a valid email").required("Email is required"),
 	});
 
-	const { register, handleSubmit } = useForm({
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm({
 		resolver: yupResolver(schema),
 	});
 
@@ -25,14 +29,14 @@ const CustomerInfo = () => {
 
 			<fieldset className="block-content">
 				<Label label={"Email *"} />
-
+				{errors.email && <span className="error">{errors.email.message}</span>}
 				<form
 					onSubmit={handleSubmit(onSubmit)}
 					className="checkout-form"
 				>
 					<input
 						type="text"
-						className="checkout-input"
+						className={`checkout-input ${errors.email && "error-input"}`}
 						{...register("email")}
 					/>
 					<button>Submit</button>

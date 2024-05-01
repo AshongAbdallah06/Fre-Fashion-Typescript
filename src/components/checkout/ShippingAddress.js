@@ -7,10 +7,15 @@ import Countries from "./Countries";
 import { AppContext } from "../../App";
 
 const ShippingAddress = () => {
-	const { shippingAddress, setShippingAddress } = useContext(AppContext);
+	const [shippingAddress, setShippingAddress] = useState(null);
+	const [country, setCountry] = useState("Afghanistan");
+
 	const schema = yup.object().shape({
-		name: yup.string().required().min(2),
-		streetAddress: yup.string().required(),
+		name: yup
+			.string()
+			.required("Your Full Name is required")
+			.min(3, "Name must be at least 3 characters"),
+		streetAddress: yup.string().required("Your Street Address is required"),
 		streetAddress2: yup.string(),
 		city: yup.string().required(),
 		state: yup.string().required(),
@@ -20,24 +25,21 @@ const ShippingAddress = () => {
 			.matches(/^[0-9]{3}$/),
 	});
 
-	const { register, handleSubmit } = useForm({
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm({
 		resolver: yupResolver(schema),
 	});
 
 	const onSubmit = async (data) => {
-		setShippingAddress({
-			name: data.name,
-			streetAddress: data.streetAddress,
-			streetAddress2: data.streetAddress2 ? data.streetAddress2 : null,
-			city: data.city,
-			state: data.state,
-			postalCode: data.postalCode,
-			country: data,
-		});
+		data.country = country;
+		setShippingAddress(data);
 
-		console.log(data);
 		console.log("Shipping Info: ", shippingAddress);
 	};
+
 	return (
 		<div className="wrapper">
 			<div className="block-header">
@@ -52,9 +54,10 @@ const ShippingAddress = () => {
 					className="checkout-form"
 				>
 					<div>
-						<Label label={" Full Name *"} />
+						<Label label={"Full Name *"} />
+						{errors.name && <span className="error">{errors.name.message}</span>}
 						<input
-							className="checkout-input"
+							className={`checkout-input ${errors.name && "error-input"}`}
 							type="text"
 							{...register("name")}
 						/>
@@ -62,8 +65,12 @@ const ShippingAddress = () => {
 
 					<div>
 						<Label label={"Street Address *"} />
+						{errors.streetAddress && (
+							<span className="error">{errors.streetAddress.message}</span>
+						)}
+
 						<input
-							className="checkout-input"
+							className={`checkout-input ${errors.streetAddress && "error-input"}`}
 							type="text"
 							{...register("streetAddress")}
 						/>
@@ -79,7 +86,7 @@ const ShippingAddress = () => {
 							<Label label={"City *"} />
 
 							<input
-								className="checkout-input"
+								className={`checkout-input ${errors.city && "error-input"}`}
 								type="text"
 								{...register("city")}
 							/>
@@ -89,7 +96,7 @@ const ShippingAddress = () => {
 							<Label label={"State/Province *"} />
 
 							<input
-								className="checkout-input"
+								className={`checkout-input ${errors.state && "error-input"}`}
 								type="text"
 								{...register("state")}
 							/>
@@ -99,14 +106,17 @@ const ShippingAddress = () => {
 							<Label label={"Zip/Postal Code *"} />
 
 							<input
-								className="checkout-input"
+								className={`checkout-input ${errors.postalCode && "error-input"}`}
 								type="text"
 								maxLength={3}
 								{...register("postalCode")}
 							/>
 						</div>
 					</div>
-					<Countries />
+					<Countries
+						country={country}
+						setCountry={setCountry}
+					/>
 
 					<button className="submit">Submit</button>
 				</form>

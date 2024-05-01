@@ -91,6 +91,7 @@ h4 {
 
 .method-item {
 	padding: 1rem;
+	cursor: pointer;
 	font-weight: 400;
 	display: flex;
 	flex-direction: row;
@@ -214,4 +215,14 @@ input[type="checkbox"] {
 
 .submit {
 	height: 2.5rem;
+}
+
+.error {
+	display: inline-block;
+	color: red;
+	font-size: 0.8rem;
+}
+
+.error-input {
+	border: 1px solid red;
 }

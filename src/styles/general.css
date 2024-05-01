@@ -17,6 +17,10 @@ header {
 	position: relative;
 }
 
+input:focus {
+	outline: none;
+}
+
 .heading {
 	width: 100%;
 	background-color: black;

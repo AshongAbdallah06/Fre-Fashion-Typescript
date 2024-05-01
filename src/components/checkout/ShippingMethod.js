@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 const ShippingMethod = () => {
+	const [selectedMethod, setSelectedMethod] = useState("flat-rate");
 	const methodItems = [
 		{
 			name: "Flat Rate",
@@ -22,6 +23,10 @@ const ShippingMethod = () => {
 		},
 	];
 
+	const handleMethodSelection = (methodName) => {
+		setSelectedMethod(methodName);
+	};
+
 	return (
 		<div className="wrapper">
 			<div className="wrapper">
@@ -36,10 +41,16 @@ const ShippingMethod = () => {
 						<div
 							className="method-item"
 							key={item.id}
+							onClick={() =>
+								handleMethodSelection(item.name.toLowerCase().replaceAll(" ", "-"))
+							}
 						>
 							<input
 								type="radio"
 								name="method"
+								checked={
+									selectedMethod === item.name.toLowerCase().replaceAll(" ", "-")
+								}
 							/>
 
 							<div className="method-description">
