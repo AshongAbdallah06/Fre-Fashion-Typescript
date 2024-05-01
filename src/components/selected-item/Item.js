@@ -10,8 +10,11 @@ const Item = ({
 	productImage,
 	productType,
 	productQuantity,
+	productId,
 	title = productName && productName,
 }) => {
+	document.title = title;
+
 	return (
 		<div>
 			<div className="heading">
@@ -33,6 +36,7 @@ const Item = ({
 						productPrice={productPrice}
 						productImage={productImage}
 						productQuantity={productQuantity}
+						productId={productId}
 					/>
 				</div>
 			</section>

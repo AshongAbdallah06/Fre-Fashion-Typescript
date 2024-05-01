@@ -5,9 +5,9 @@ const PurchaseForm = ({
 	productName,
 	productPrice,
 	productImage,
-	productQuantity,
+	productId,
 }) => {
-	const { handleAddToCart, itemQuantity, setItemQuantity, setCartDropdown } =
+	const { handleAddItem, itemQuantity, setItemQuantity, setCartDropdown } =
 		useContext(AppContext);
 
 	const [clicked, setClicked] = useState(false);
@@ -27,18 +27,19 @@ const PurchaseForm = ({
 					id="quantity"
 					type="number"
 					max={999}
-					min={0}
+					min={1}
 					className="quantity-input"
 				/>
 				<div>
 					<button
 						className="add-to-cart"
 						onClick={() => {
-							handleAddToCart(
+							handleAddItem(
 								productName,
 								productImage,
 								productPrice,
-								itemQuantity
+								itemQuantity,
+								productId
 							);
 
 							setClicked(true);

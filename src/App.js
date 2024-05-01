@@ -14,6 +14,7 @@ import Hats from "./components/shop/Hats";
 import Item from "./components/selected-item/Item";
 import Checkout from "./components/checkout/Checkout";
 import formatCurrency from "./utils/money";
+import Login from "./components/login/Login";
 
 export const AppContext = createContext();
 
@@ -21,32 +22,50 @@ function App() {
 	const title = "";
 	const heading = "";
 
-	const [cartItems, setCartItems] = useState(
-		JSON.parse(localStorage.getItem("cartItems")) || []
-	);
-	const [itemQuantity, setItemQuantity] = useState(0);
+	const [cartDropdown, setCartDropdown] = useState(false);
+	const [itemQuantity, setItemQuantity] = useState(1);
+	const [subtotal, setSubtotal] = useState(12000);
+	const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem("cartItems")) || []);
 
-	const handleAddToCart = (productName, productImage, productPrice) => {
-		const id = cartItems.length
-			? cartItems[cartItems.length - 1].id + 1
-			: 1;
-		setCartItems([
-			...cartItems,
-			{
+	const handleAddItem = (productName, productImage, productPrice, quantity) => {
+		const quantityNumber = parseInt(quantity);
+
+		// Check if cartItems is initialized and if not, initialize it as an empty array
+		const updatedCartItems = cartItems ? [...cartItems] : [];
+
+		// Check if the item already exists in the cart
+		const existingItemIndex = updatedCartItems.findIndex(
+			(item) => item.itemName === productName
+		);
+
+		if (existingItemIndex !== -1) {
+			// If the item exists, update its quantity
+			updatedCartItems[existingItemIndex].itemQuantity += quantityNumber;
+		} else {
+			// If the item doesn't exist, add it to the cart
+			const id = updatedCartItems.length
+				? updatedCartItems[updatedCartItems.length - 1].itemId + 1
+				: 1;
+			updatedCartItems.push({
 				itemName: productName,
 				itemImage: productImage,
 				itemPrice: productPrice,
-				itemQuantity: itemQuantity,
+				itemQuantity: quantityNumber,
 				itemId: id,
-			},
-		]);
+			});
+		}
+
+		setCartItems(updatedCartItems);
+	};
+
+	const handleRemoveItem = (id) => {
+		const newCartItems = cartItems.filter((item) => item.itemId !== id);
+		setCartItems(newCartItems);
 	};
 
 	useEffect(() => {
 		localStorage.setItem("cartItems", JSON.stringify(cartItems));
 	}, [cartItems]);
-
-	const [cartDropdown, setCartDropdown] = useState(false);
 
 	const [product, setProduct] = useState(
 		JSON.parse(localStorage.getItem("product")) || {
@@ -59,11 +78,13 @@ function App() {
 	);
 
 	useEffect(() => {
+		console.log(cartItems);
 		localStorage.setItem("product", JSON.stringify(product));
 	}, [product]);
 
 	return (
 		<div className="App">
+			{/* <Login /> */}
 			<AppContext.Provider
 				value={{
 					title,
@@ -74,9 +95,11 @@ function App() {
 					setCartDropdown,
 					cartItems,
 					setCartItems,
-					handleAddToCart,
+					handleAddItem,
+					handleRemoveItem,
 					itemQuantity,
 					setItemQuantity,
+					subtotal,
 				}}
 			>
 				<Router>
@@ -101,9 +124,7 @@ function App() {
 										<Item
 											productName={product.name}
 											productImage={product.product_image}
-											productPrice={formatCurrency(
-												product.price
-											)}
+											productPrice={formatCurrency(product.price)}
 											productType={product.type}
 											productQuantity={product.quantity}
 										/>

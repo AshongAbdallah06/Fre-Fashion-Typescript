@@ -13,6 +13,7 @@
 	overflow: auto;
 	box-shadow: rgba(0, 0, 0, 0.25) 0 0.3rem 1.6rem 0;
 	transition: height 0.1s;
+	z-index: 100;
 }
 
 .animation {
@@ -35,9 +36,9 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 5rem;
 	font-size: 0.8rem;
 	color: rgb(129, 129, 135);
+	height: 6rem;
 }
 
 .cart-header {
@@ -63,22 +64,16 @@
 	padding: 0;
 }
 
-.cart-item-wrapper {
-	display: flex;
-	flex-direction: column;
-	flex: 1 1 0%;
-}
-
 .cart-item {
 	display: flex;
 	padding-top: 0.8rem;
 	padding-bottom: 0.8rem;
 	align-items: flex-start;
+	height: 6rem;
 }
 
 .cart-item-image {
 	width: 3.75rem;
-	height: 0%;
 }
 
 .cart-item-info {

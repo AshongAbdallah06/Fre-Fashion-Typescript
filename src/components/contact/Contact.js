@@ -5,6 +5,8 @@ import Form from "./Form";
 import "../../styles/contact.css";
 
 const Contact = ({ title = "Contact" }) => {
+	document.title = "Fre Fashion & Clothing | Contact";
+
 	return (
 		<div>
 			<div className="heading">

@@ -17,6 +17,20 @@ header {
 	position: relative;
 }
 
+.heading {
+	width: 100%;
+	background-color: black;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 2rem 0;
+}
+
+.heading h1 {
+	font-size: 4rem;
+}
+
 .top-banner {
 	display: flex;
 	justify-content: space-between;
@@ -90,6 +104,10 @@ a {
 	margin-left: 0.3rem;
 }
 
+.nav-link:hover {
+	color: rgb(104, 104, 109);
+}
+
 button {
 	height: 3.3rem;
 	padding-right: 1.4rem;
@@ -101,6 +119,7 @@ button {
 	font-weight: 500;
 	cursor: pointer;
 	border: none;
+	border-radius: 0.3rem;
 }
 
 /* Footer */

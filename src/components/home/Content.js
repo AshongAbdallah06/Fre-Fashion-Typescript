@@ -6,6 +6,7 @@ import OurBrands from "./OurBrands";
 import Signup from "./Signup";
 
 const Content = () => {
+	document.title = "Fre Fashion & Clothing | Home";
 	return (
 		<main>
 			<Banner />

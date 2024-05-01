@@ -4,6 +4,8 @@ import ShopItems from "./ShopItems";
 import "../../styles/shop.css";
 
 const Shop = ({ title = "Shop" }) => {
+	document.title = "Fre Fashion & Clothing | Shop";
+
 	return (
 		<div>
 			<div className="heading">

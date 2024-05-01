@@ -8,9 +8,9 @@ const ItemDescription = ({ productName, productPrice, productType }) => {
 				to={`/shop/${productType.toLowerCase()}`}
 				className="item-category"
 			>
-				<p className="category-title">{productType}</p>
+				{productType}
 			</Link>
-			<h2>{productName}</h2>
+			<h2 className="item-name">{productName}</h2>
 			<div className="price">$ {productPrice} USD</div>
 		</>
 	);

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { AppContext } from "../../App";
 
 const CartList = () => {
-	const { cartItems } = useContext(AppContext);
+	const { cartItems, handleRemoveItem } = useContext(AppContext);
 
 	return (
 		<div className="cart-list">
@@ -19,17 +19,16 @@ const CartList = () => {
 					<div className="cart-item-info">
 						<p className="cart-product-name">{item.itemName}</p>
 						<div className="text-block">$ {item.itemPrice} USD</div>
-						<button className="remove-button">Remove</button>
+						<button
+							className="remove-button"
+							onClick={() => handleRemoveItem(item.itemId)}
+						>
+							Remove
+						</button>
 					</div>
-					<input
-						className="cart-quantity-input"
-						required
-						pattern="^[0-9]+$"
-						min="1"
-						max="999"
-						type="number"
-						defaultValue={item.itemQuantity}
-					/>
+					<div className="cart-quantity-input">
+						{item.itemQuantity}
+					</div>
 				</div>
 			))}
 		</div>

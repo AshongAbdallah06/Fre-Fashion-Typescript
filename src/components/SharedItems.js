@@ -22,6 +22,7 @@ const SharedItems = () => {
 							product_image: item.image,
 							quantity: itemQuantity,
 							type: item.type,
+							id: item.id,
 						});
 					}}
 				>

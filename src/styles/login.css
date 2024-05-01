@@ -1,0 +1,50 @@
+.login-form {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	margin-bottom: 2rem;
+	width: 25rem;
+	padding: 2rem;
+	border-radius: 0.2rem;
+	box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
+}
+
+form div {
+	display: flex;
+	flex-direction: column;
+	margin-top: 1rem;
+}
+
+h1 {
+	margin-bottom: 0.6rem;
+}
+
+label {
+	margin-bottom: 0.2rem;
+	font-size: 1.2rem;
+}
+
+input {
+	padding: 0.8rem;
+	border: 1px solid rgb(214, 214, 214);
+	font-family: Poppins;
+}
+
+.btn {
+	margin-top: 2rem;
+}
+
+.new {
+	font-size: 0.8rem;
+	text-align: center;
+	margin-top: 1rem;
+}
+
+.signup {
+	color: blue;
+}
+
+.signup:hover {
+	text-decoration: underline;
+	color: red;
+}

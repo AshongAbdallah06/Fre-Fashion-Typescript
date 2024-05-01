@@ -29,6 +29,18 @@ aside.item {
 	margin-top: 3.5rem;
 }
 
+.item-name {
+	margin-top: 2rem;
+}
+
+.item-category {
+	color: rgb(145, 145, 151);
+}
+
+.item-category:hover {
+	color: #000;
+}
+
 .quantity-label {
 	color: rgb(145, 145, 151);
 	font-weight: 400;
