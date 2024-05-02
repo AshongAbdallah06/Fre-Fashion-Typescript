@@ -22,7 +22,6 @@ const CustomerInfo = ({ submitted, setSubmitted, handleSubmitted }) => {
 
 	const onSubmit = (data) => {
 		setOrderInfo({ ...orderInfo, customerOrderInfo: data });
-		console.log(data);
 
 		handleSubmitted();
 	};

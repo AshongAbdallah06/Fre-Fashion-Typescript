@@ -3,7 +3,9 @@ import { AppContext } from "../../App";
 import formatCurrency from "../../utils/money";
 
 const ShippingMethod = () => {
+	const { orderInfo, setOrderInfo } = useContext(AppContext);
 	const { selectedMethod, setSelectedMethod } = useContext(AppContext);
+
 	const methodItems = [
 		{
 			name: "Flat Rate",
@@ -43,12 +45,19 @@ const ShippingMethod = () => {
 						<div
 							className="method-item"
 							key={item.id}
-							onClick={() =>
+							onClick={() => {
 								handleMethodSelection(
 									item.name.toLowerCase().replaceAll(" ", "-"),
 									item.amount
-								)
-							}
+								);
+								setOrderInfo({
+									...orderInfo,
+									shippingMethodInfo: {
+										name: item.name,
+										description: item.textBlock,
+									},
+								});
+							}}
 						>
 							<input
 								type="radio"

@@ -1,34 +1,27 @@
 import React, { useContext } from "react";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { AppContext } from "../../App";
 
 const Sidebar = () => {
-	const { isOrderPlaced, setIsOrderPlaced, orderInfo, selectedMethod, subtotal } =
+	const { cartItems, isOrderPlaced, setIsOrderPlaced, orderInfo, selectedMethod, subtotal } =
 		useContext(AppContext);
 
-	const schema = yup.object().shape({
-		discount: yup.string(),
-	});
+	const { handleSubmit } = useForm();
 
-	const { register, handleSubmit } = useForm({
-		resolver: yupResolver(schema),
-	});
-
-	const onSubmit = () => {};
+	const onSubmit = () => {
+		// Prevent Default behavior of the form
+	};
 
 	const placeOrder = () => {
+		// If all the fields required has been filled then place order
 		if (
 			orderInfo.customerOrderInfo !== null &&
 			orderInfo.shippingOrderInfo !== null &&
 			orderInfo.paymentOrderInfo !== null
-			// && orderInfo.orderItems !== null
+			// cartItems.length === 0
 		) {
-			console.log("At least one of the specified values is not null");
+			// No null fields
 			setIsOrderPlaced(true);
-		} else {
-			console.log("ALL VALUES ARE NULL");
 		}
 	};
 
@@ -67,10 +60,7 @@ const Sidebar = () => {
 					onSubmit={handleSubmit(onSubmit)}
 					className="checkout-form flex"
 				>
-					<input
-						className="discounts-input"
-						{...register("discount")}
-					/>
+					<input className="discounts-input" />
 					<button className="discounts-button">Apply</button>
 				</form>
 			</div>

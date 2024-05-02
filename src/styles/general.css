@@ -104,11 +104,6 @@ a {
 	margin-right: 1rem;
 }
 
-.nav-link:nth-child(2)::after {
-	content: url("../images/icon-arrow-down.svg");
-	margin-left: 0.3rem;
-}
-
 .nav-link:hover {
 	color: rgb(104, 104, 109);
 }

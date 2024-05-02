@@ -10,15 +10,23 @@ import Items from "./Items";
 import Sidebar from "./Sidebar";
 import { AppContext } from "../../App";
 import Label from "./Label";
+import ShippingMethodInfo from "./order/ShippingMethodInfo";
+import ShippingBillingAddress from "./order/ShippingBillingAddress";
+import CardInfo from "./order/CardInfo";
+import CustomerEmail from "./order/CustomerEmail";
 
 const Checkout = ({ title = "Checkout" }) => {
 	const { isOrderPlaced, orderInfo } = useContext(AppContext);
+
 	document.title = "Fre Fashion & Clothing | Checkout";
 
 	const [submitted, setSubmitted] = useState(false);
 
 	const handleSubmitted = () => {
+		// Set submitted to true
 		setSubmitted(true);
+
+		// Set submitted to false after 2 seconds
 		setTimeout(() => {
 			setSubmitted(false);
 		}, 2000);
@@ -39,9 +47,10 @@ const Checkout = ({ title = "Checkout" }) => {
 
 			<section className="section">
 				<div className="checkout-form form-container">
-					{isOrderPlaced ? (
-						<>
-							<div className="layout-main">
+					<div className="layout-main">
+						{isOrderPlaced ? (
+							// setTimeout(() => {
+							<>
 								{/* Customer Information */}
 								<div className="wrapper">
 									<div className="block-header">
@@ -50,46 +59,15 @@ const Checkout = ({ title = "Checkout" }) => {
 
 									<fieldset className="block-content">
 										<div className="checkout-row">
-											<div className="checkout-column">
-												<Label label={"Email"} />
-												<p>{orderInfo.customerOrderInfo.email}</p>
-											</div>
-											<div className="checkout-column">
-												<Label label={"Shipping Address"} />
-												<p className="details">
-													{orderInfo.shippingOrderInfo.name}
-												</p>
-												<p className="details">
-													{orderInfo.shippingOrderInfo.streetAddress}
-												</p>
-												<p className="details">
-													{orderInfo.shippingOrderInfo.city}{" "}
-													{orderInfo.shippingOrderInfo.state}{" "}
-													{orderInfo.shippingOrderInfo.postalCode}{" "}
-												</p>
-												<p className="details">
-													{orderInfo.shippingOrderInfo.country}
-												</p>
-											</div>
+											<CustomerEmail />
+
+											<ShippingBillingAddress label={"Shipping Address"} />
 										</div>
 									</fieldset>
 								</div>
 
-								{/* Shipping Address Information */}
-								<div className="wrapper">
-									<div className="block-header">
-										<h4>Shipping Method</h4>
-									</div>
-
-									<fieldset className="block-content">
-										<div className="checkout-row">
-											<div className="checkout-column">
-												<Label label={"Flat Rate"} />
-												<p>Standard flat rate for all shipments.</p>
-											</div>
-										</div>
-									</fieldset>
-								</div>
+								{/* Shipping Method Information */}
+								<ShippingMethodInfo />
 
 								{/* Payment Information */}
 								<div className="wrapper">
@@ -99,52 +77,19 @@ const Checkout = ({ title = "Checkout" }) => {
 
 									<fieldset className="block-content">
 										<div className="checkout-row">
-											<div className="checkout-column">
-												<Label label={"Payment Info"} />
-												<p
-													style={{
-														letterSpacing: "0.1rem",
-														marginBottom: "0.5rem",
-													}}
-												>
-													Card No. :{" "}
-													{orderInfo.paymentOrderInfo.cardNumber}
-												</p>
-												<p>
-													Expiration Date :{" "}
-													{orderInfo.paymentOrderInfo.expirationDate}
-												</p>
-											</div>
+											<CardInfo />
 
-											<div className="checkout-column">
-												<Label label={"Billing Address"} />
-												<p className="details">
-													{orderInfo.shippingOrderInfo.name}
-												</p>
-												<p className="details">
-													{orderInfo.shippingOrderInfo.streetAddress}
-												</p>
-												<p className="details">
-													{orderInfo.shippingOrderInfo.city}{" "}
-													{orderInfo.shippingOrderInfo.state}{" "}
-													{orderInfo.shippingOrderInfo.postalCode}{" "}
-												</p>
-												<p className="details">
-													{orderInfo.shippingOrderInfo.country}
-												</p>
-											</div>
+											<ShippingBillingAddress label={"Billing Address"} />
 										</div>
 									</fieldset>
 								</div>
 
+								{/* Items in the cart */}
 								<Items />
-							</div>
-
-							<Sidebar />
-						</>
-					) : (
-						<>
-							<div className="layout-main">
+							</>
+						) : (
+							// }, 3000)
+							<>
 								<div className="buttons">
 									<PaypalButton />
 									<ApplePayButton />
@@ -170,11 +115,14 @@ const Checkout = ({ title = "Checkout" }) => {
 									handleSubmitted={handleSubmitted}
 								/>
 
+								{/* Items in the cart */}
 								<Items />
-							</div>
-							<Sidebar />
-						</>
-					)}
+							</>
+						)}
+					</div>
+
+					{/* Order Summary */}
+					<Sidebar />
 				</div>
 			</section>
 		</div>

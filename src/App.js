@@ -43,6 +43,7 @@ function App() {
 	const [orderInfo, setOrderInfo] = useState({
 		customerOrderInfo: null,
 		shippingOrderInfo: null,
+		shippingMethodInfo: null,
 		paymentOrderInfo: null,
 	});
 

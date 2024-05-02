@@ -15,9 +15,7 @@ const Login = () => {
 		resolver: yupResolver(schema),
 	});
 
-	const onSubmit = (data) => {
-		console.log(data);
-	};
+	const onSubmit = () => {};
 
 	return (
 		<div>
