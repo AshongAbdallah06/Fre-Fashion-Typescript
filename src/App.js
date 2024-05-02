@@ -15,53 +15,26 @@ import Item from "./components/selected-item/Item";
 import Checkout from "./components/checkout/Checkout";
 import formatCurrency from "./utils/money";
 import Login from "./components/login/Login";
+import useFunctions from "./hooks/useFunctions";
 
 export const AppContext = createContext();
 
 function App() {
+	const {
+		cartItems,
+		setCartItems,
+		handleAddItem,
+		handleRemoveItem,
+		cartDropdown,
+		setCartDropdown,
+		itemQuantity,
+		setItemQuantity,
+	} = useFunctions();
+
 	const title = "";
 	const heading = "";
 
-	const [cartDropdown, setCartDropdown] = useState(false);
-	const [itemQuantity, setItemQuantity] = useState(1);
-	const [subtotal, setSubtotal] = useState(12000);
-	const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem("cartItems")) || []);
-
-	const handleAddItem = (productName, productImage, productPrice, quantity) => {
-		const quantityNumber = parseInt(quantity);
-
-		// Check if cartItems is initialized and if not, initialize it as an empty array
-		const updatedCartItems = cartItems ? [...cartItems] : [];
-
-		// Check if the item already exists in the cart
-		const existingItemIndex = updatedCartItems.findIndex(
-			(item) => item.itemName === productName
-		);
-
-		if (existingItemIndex !== -1) {
-			// If the item exists, update its quantity
-			updatedCartItems[existingItemIndex].itemQuantity += quantityNumber;
-		} else {
-			// If the item doesn't exist, add it to the cart
-			const id = updatedCartItems.length
-				? updatedCartItems[updatedCartItems.length - 1].itemId + 1
-				: 1;
-			updatedCartItems.push({
-				itemName: productName,
-				itemImage: productImage,
-				itemPrice: productPrice,
-				itemQuantity: quantityNumber,
-				itemId: id,
-			});
-		}
-
-		setCartItems(updatedCartItems);
-	};
-
-	const handleRemoveItem = (id) => {
-		const newCartItems = cartItems.filter((item) => item.itemId !== id);
-		setCartItems(newCartItems);
-	};
+	// const [subtotal, setSubtotal] = useState(12000);
 
 	useEffect(() => {
 		localStorage.setItem("cartItems", JSON.stringify(cartItems));
@@ -98,7 +71,7 @@ function App() {
 					handleRemoveItem,
 					itemQuantity,
 					setItemQuantity,
-					subtotal,
+					// subtotal,
 				}}
 			>
 				<Router>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Label from "./Label";
 
 const Countries = ({ country, setCountry }) => {

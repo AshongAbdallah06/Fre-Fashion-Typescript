@@ -18,8 +18,12 @@ const PaymentInfo = () => {
 	});
 
 	const schema = yup.object().shape({
-		cardNumber: yup.string().required(),
-		// .matches(/^[0-9]{13,19}$/),
+		cardNumber: yup
+			.string()
+			.required("Your card number is required")
+			.matches(/^[0-9 -]+$/, "Please enter a valid card number")
+			.min(8, "Card number must be at least 8 characters")
+			.max(19, "Card number should not be more than 19 characters"),
 		expirationDate: yup
 			.string()
 			.required()
@@ -30,7 +34,11 @@ const PaymentInfo = () => {
 			.matches(/^[0-9]{3}$/),
 	});
 
-	const { register, handleSubmit } = useForm({
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm({
 		resolver: yupResolver(schema),
 	});
 
@@ -57,11 +65,14 @@ const PaymentInfo = () => {
 					className="checkout-form"
 				>
 					<Label label={"Card Number *"} />
+					{errors.cardNumber && (
+						<span className="error">{errors.cardNumber.message}</span>
+					)}
+
 					<input
-						className="checkout-input"
+						className={`checkout-input ${errors.cardNumber && "error-input"}`}
 						type="text"
-						minLength={13}
-						maxLength={19}
+						placeholder="1234567890"
 						{...register("cardNumber")}
 					/>
 
@@ -69,7 +80,9 @@ const PaymentInfo = () => {
 						<div className="checkout-column">
 							<Label label={"Expiration date *"} />
 							<input
-								className="checkout-input"
+								className={`checkout-input ${
+									errors.expirationDate && "error-input"
+								}`}
 								type="text"
 								maxLength={5}
 								placeholder="MM/YY"
@@ -80,9 +93,10 @@ const PaymentInfo = () => {
 						<div className="checkout-column">
 							<Label label={"Security Code *"} />
 							<input
-								className="checkout-input"
+								className={`checkout-input ${errors.securityCode && "error-input"}`}
 								type="text"
 								maxLength={3}
+								placeholder="000"
 								{...register("securityCode")}
 							/>
 						</div>

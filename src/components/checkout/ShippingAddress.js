@@ -1,10 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import Label from "./Label";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Countries from "./Countries";
-import { AppContext } from "../../App";
 
 const ShippingAddress = () => {
 	const [shippingAddress, setShippingAddress] = useState(null);
@@ -14,11 +13,21 @@ const ShippingAddress = () => {
 		name: yup
 			.string()
 			.required("Your Full Name is required")
-			.min(3, "Name must be at least 3 characters"),
-		streetAddress: yup.string().required("Your Street Address is required"),
+			.matches(/^[A-Za-z -]+$/, "Please enter a valid full name"),
+
+		streetAddress: yup
+			.string()
+			.required("Your Street Address is required")
+			.matches(/^[0-9]+ [A-Za-z]+ [A-Za-z ]+$/, "Please enter a valid street address"),
 		streetAddress2: yup.string(),
-		city: yup.string().required(),
-		state: yup.string().required(),
+		city: yup
+			.string()
+			.required()
+			.matches(/^[A-Za-z]{4,}$/),
+		state: yup
+			.string()
+			.required()
+			.matches(/^[A-Za-z]{4,}$/),
 		postalCode: yup
 			.string()
 			.required("Postal code is required")

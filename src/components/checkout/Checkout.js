@@ -8,24 +8,9 @@ import ShippingMethod from "./ShippingMethod";
 import PaymentInfo from "./PaymentInfo";
 import Items from "./Items";
 import Sidebar from "./Sidebar";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
-import * as yup from "yup";
 
 const Checkout = ({ title = "Checkout" }) => {
 	document.title = "Fre Fashion & Clothing | Checkout";
-
-	const schema = yup.object().shape({
-		email: yup.string().email().required(),
-	});
-
-	const { register, handleSubmit } = useForm({
-		resolver: yupResolver(schema),
-	});
-
-	const onSubmit = (e) => {
-		e.preventDefault();
-	};
 
 	return (
 		<div>

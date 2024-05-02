@@ -35,7 +35,7 @@ const CustomerInfo = () => {
 					className="checkout-form"
 				>
 					<input
-						type="text"
+						type="email"
 						className={`checkout-input ${errors.email && "error-input"}`}
 						{...register("email")}
 					/>
