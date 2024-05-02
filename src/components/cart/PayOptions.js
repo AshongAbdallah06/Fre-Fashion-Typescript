@@ -6,7 +6,7 @@ import ApplePayButton from "./ApplePayButton";
 import PaypalButton from "./PaypalButton";
 
 const PayOptions = () => {
-	const { subtotal } = useContext(AppContext);
+	const { subtotal, setCartDropdown } = useContext(AppContext);
 	return (
 		<section className="pay-options">
 			<div className="cart-labels">
@@ -18,7 +18,7 @@ const PayOptions = () => {
 
 			<ApplePayButton />
 
-			<button>
+			<button onClick={() => setCartDropdown(false)}>
 				<Link
 					to={"/checkout"}
 					className="button-pay checkout-button"

@@ -1,6 +1,6 @@
 .form-container {
 	min-height: auto;
-	padding: 1.4rem;
+	padding: 0 10rem;
 	margin: 0 6rem;
 	display: flex;
 	justify-content: center;
@@ -58,7 +58,8 @@ h4 {
 }
 
 .checkout-input,
-.checkout-selector {
+.checkout-selector,
+.discounts-input {
 	background-color: rgb(250, 250, 250);
 	border: 1px solid rgb(221, 221, 221);
 	border-radius: 0.2rem;
@@ -188,12 +189,16 @@ input[type="checkbox"] {
 	margin: 1.4rem 0;
 }
 
+.discounts-input {
+	margin-bottom: 0;
+}
+
 .discounts-button {
 	padding: 0 1.3rem;
 	display: flex;
 	align-items: center;
 	margin-left: 0.5rem;
-	height: 3rem;
+	height: 2.4rem;
 }
 
 .flex {
@@ -204,6 +209,7 @@ input[type="checkbox"] {
 
 .place-order {
 	width: 100%;
+	height: 3rem;
 	margin-bottom: 1.5rem;
 }
 
@@ -213,7 +219,7 @@ input[type="checkbox"] {
 }
 
 .submit {
-	height: 2.5rem;
+	height: 2.4rem;
 }
 
 .error {

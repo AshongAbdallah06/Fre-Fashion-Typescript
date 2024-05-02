@@ -1,9 +1,9 @@
-import strangerThingsGlasses from "./images/stranger-things-inspired-sunglasses.jpeg";
-import omegaRegularMensWatch from "./images/omega-regulateur-mens-watch.jpg";
-import nikeAirForce1 from "./images/nike-lunar-force-1-duckboot.jpeg";
-import ovalSpectacleSunglasses from "./images/oval-spectacle-steampunk-victorian-sunglass.jpeg";
-import cobblesTShirt from "./images/cobbles-classic-tshirt.jpeg";
-import johanGreyHat from "./images/johan-grey-hat.jpeg";
+import strangerThingsGlasses from "../images/stranger-things-inspired-sunglasses.jpeg";
+import omegaRegularMensWatch from "../images/omega-regulateur-mens-watch.jpg";
+import nikeAirForce1 from "../images/nike-lunar-force-1-duckboot.jpeg";
+import ovalSpectacleSunglasses from "../images/oval-spectacle-steampunk-victorian-sunglass.jpeg";
+import cobblesTShirt from "../images/cobbles-classic-tshirt.jpeg";
+import johanGreyHat from "../images/johan-grey-hat.jpeg";
 
 const useProducts = () => {
 	const items = [

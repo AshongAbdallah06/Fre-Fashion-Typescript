@@ -9,14 +9,13 @@ import PaymentInfo from "./PaymentInfo";
 import Items from "./Items";
 import Sidebar from "./Sidebar";
 import { AppContext } from "../../App";
-import Label from "./Label";
 import ShippingMethodInfo from "./order/ShippingMethodInfo";
 import ShippingBillingAddress from "./order/ShippingBillingAddress";
 import CardInfo from "./order/CardInfo";
 import CustomerEmail from "./order/CustomerEmail";
 
 const Checkout = ({ title = "Checkout" }) => {
-	const { isOrderPlaced, orderInfo } = useContext(AppContext);
+	const { isOrderPlaced } = useContext(AppContext);
 
 	document.title = "Fre Fashion & Clothing | Checkout";
 

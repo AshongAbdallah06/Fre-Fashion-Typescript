@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { AppContext } from "../../App";
 
 const Sidebar = () => {
-	const { cartItems, isOrderPlaced, setIsOrderPlaced, orderInfo, selectedMethod, subtotal } =
+	const { isOrderPlaced, setIsOrderPlaced, orderInfo, selectedMethod, subtotal } =
 		useContext(AppContext);
 
 	const { handleSubmit } = useForm();

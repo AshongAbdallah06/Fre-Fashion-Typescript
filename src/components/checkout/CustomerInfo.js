@@ -44,7 +44,7 @@ const CustomerInfo = ({ submitted, setSubmitted, handleSubmitted }) => {
 						className={`checkout-input ${errors.email && "error-input"}`}
 						{...register("email")}
 					/>
-					<button>Submit</button>
+					<button className="submit">Submit</button>
 				</form>
 			</fieldset>
 		</div>

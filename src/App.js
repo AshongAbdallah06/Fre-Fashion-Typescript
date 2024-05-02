@@ -14,7 +14,7 @@ import Hats from "./components/shop/Hats";
 import Item from "./components/selected-item/Item";
 import Checkout from "./components/checkout/Checkout";
 import formatCurrency from "./utils/money";
-import Login from "./components/login/Login";
+// import Login from "./components/login/Login";
 import useFunctions from "./hooks/useFunctions";
 
 export const AppContext = createContext();
@@ -43,14 +43,17 @@ function App() {
 	const [orderInfo, setOrderInfo] = useState({
 		customerOrderInfo: null,
 		shippingOrderInfo: null,
-		shippingMethodInfo: null,
+		shippingMethodInfo: {
+			name: "flat-rate",
+			description: "Standard flat rate for all shipments",
+		},
 		paymentOrderInfo: null,
 	});
 
 	useEffect(() => {
 		// Calculate subtotal whenever cartItems change
 		calculateSubTotal();
-	}, [cartItems]);
+	});
 
 	const [subtotal, setSubtotal] = useState(0);
 	const calculateSubTotal = () => {

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AppContext } from "../App";
-import useProducts from "../useProducts";
+import useProducts from "../hooks/useProducts";
 import formatCurrency from "../utils/money";
 
 const SharedItems = () => {
