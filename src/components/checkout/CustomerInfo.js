@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import Label from "./Label";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { AppContext } from "../../App";
 
 const CustomerInfo = () => {
+	const { orderInfo, setOrderInfo } = useContext(AppContext);
+
 	const schema = yup.object().shape({
 		email: yup.string().email("Please enter a valid email").required("Email is required"),
 	});
@@ -18,6 +21,7 @@ const CustomerInfo = () => {
 	});
 
 	const onSubmit = (data) => {
+		setOrderInfo({ ...orderInfo, customerOrderInfo: data });
 		console.log(data);
 	};
 	return (

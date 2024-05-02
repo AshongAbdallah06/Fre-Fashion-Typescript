@@ -1,19 +1,35 @@
-import React from "react";
+import React, { useContext } from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import { AppContext } from "../../App";
+import formatCurrency from "../../utils/money";
 
 const Sidebar = () => {
+	const { setIsOrderPlaced, orderInfo, selectedMethod, subtotal } = useContext(AppContext);
+
 	const schema = yup.object().shape({
-		discount: yup.string().required(),
+		discount: yup.string(),
 	});
 
 	const { register, handleSubmit } = useForm({
 		resolver: yupResolver(schema),
 	});
 
-	const onSubmit = (data) => {
-		console.log(data);
+	const onSubmit = (data) => {};
+
+	const placeOrder = (data) => {
+		if (
+			orderInfo.customerOrderInfo !== null &&
+			orderInfo.shippingOrderInfo !== null &&
+			orderInfo.paymentOrderInfo !== null
+			// && orderInfo.orderItems !== null
+		) {
+			console.log("At least one of the specified values is not null");
+			setIsOrderPlaced(true);
+		} else {
+			console.log("ALL VALUES ARE NULL");
+		}
 	};
 
 	return (
@@ -25,18 +41,19 @@ const Sidebar = () => {
 			<div className="block-content">
 				<div className="summary-line-item">
 					<div>Subtotal:</div>
-					<div className="total-price">$ 341.00 USD</div>
+					<div className="total-price">$ {subtotal} USD</div>
 				</div>
 
 				<div className="summary-line-item">
-					<div>Flat Rate:</div>
-					<div className="total-price">$ 18.90 USD</div>
+					<div style={{ textTransform: "capitalize" }}>{selectedMethod.name}:</div>
+					<div className="total-price">$ {selectedMethod.amount} USD</div>
 				</div>
 
 				<div className="summary-line-item">
 					<div>Total:</div>
-					<div className="text-block-2">$ 489.20 USD</div>
-					{/* <div className="total-price">$ 341.00 USD</div> */}
+					<div className="text-block-2">
+						$ {Number(subtotal) + Number(selectedMethod.amount) + "0"} USD
+					</div>
 				</div>
 			</div>
 
@@ -45,7 +62,7 @@ const Sidebar = () => {
 
 				<form
 					onSubmit={handleSubmit(onSubmit)}
-					className=" checkout-form flex"
+					className="checkout-form flex"
 				>
 					<input
 						className="discounts-input"
@@ -55,7 +72,12 @@ const Sidebar = () => {
 				</form>
 			</div>
 
-			<button className="place-order">Place Order</button>
+			<form
+				onSubmit={handleSubmit(placeOrder)}
+				className="checkout-form"
+			>
+				<button className="place-order">Place Order</button>
+			</form>
 		</div>
 	);
 };

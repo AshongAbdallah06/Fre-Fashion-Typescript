@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Label from "./Label";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Countries from "./Countries";
+import { AppContext } from "../../App";
 
 const ShippingAddress = () => {
+	const { orderInfo, setOrderInfo } = useContext(AppContext);
+
 	const [shippingAddress, setShippingAddress] = useState(null);
 	const [country, setCountry] = useState("Afghanistan");
 
@@ -45,6 +48,8 @@ const ShippingAddress = () => {
 	const onSubmit = async (data) => {
 		data.country = country;
 		setShippingAddress(data);
+
+		setOrderInfo({ ...orderInfo, shippingOrderInfo: data });
 
 		console.log("Shipping Info: ", shippingAddress);
 	};

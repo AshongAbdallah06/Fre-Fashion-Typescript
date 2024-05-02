@@ -20,6 +20,12 @@ import useFunctions from "./hooks/useFunctions";
 export const AppContext = createContext();
 
 function App() {
+	const [isOrderPlaced, setIsOrderPlaced] = useState(false);
+	const [selectedMethod, setSelectedMethod] = useState({
+		name: "flat-rate",
+		amount: formatCurrency(1890),
+	});
+
 	const {
 		cartItems,
 		setCartItems,
@@ -34,7 +40,25 @@ function App() {
 	const title = "";
 	const heading = "";
 
-	// const [subtotal, setSubtotal] = useState(12000);
+	const [orderInfo, setOrderInfo] = useState({
+		customerOrderInfo: null,
+		shippingOrderInfo: null,
+		paymentOrderInfo: null,
+		orderItems: cartItems,
+	});
+	useEffect(() => {
+		// Calculate subtotal whenever cartItems change
+		calculateSubTotal();
+	}, [cartItems]);
+
+	const [subtotal, setSubtotal] = useState(0);
+	const calculateSubTotal = () => {
+		let total = 0;
+		cartItems.forEach((item) => {
+			total += item.itemPrice * item.itemQuantity;
+		});
+		setSubtotal(total + ".00");
+	};
 
 	useEffect(() => {
 		localStorage.setItem("cartItems", JSON.stringify(cartItems));
@@ -71,7 +95,14 @@ function App() {
 					handleRemoveItem,
 					itemQuantity,
 					setItemQuantity,
-					// subtotal,
+					subtotal,
+					isOrderPlaced,
+					setIsOrderPlaced,
+					orderInfo,
+					setOrderInfo,
+					selectedMethod,
+					setSelectedMethod,
+					calculateSubTotal,
 				}}
 			>
 				<Router>

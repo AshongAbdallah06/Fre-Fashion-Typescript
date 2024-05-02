@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Label from "./Label";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { AppContext } from "../../App";
 
 const PaymentInfo = () => {
+	const { orderInfo, setOrderInfo } = useContext(AppContext);
+
 	const [paymentInfo, setPaymentInfo] = useState({
 		cardNumber: null,
 		expirationDate: null,
@@ -49,7 +52,7 @@ const PaymentInfo = () => {
 			securityCode: data.securityCode,
 		});
 
-		console.log("Payment Info: ", paymentInfo);
+		setOrderInfo({ ...orderInfo, paymentOrderInfo: data });
 	};
 
 	return (
