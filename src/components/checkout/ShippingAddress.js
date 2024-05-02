@@ -6,10 +6,10 @@ import * as yup from "yup";
 import Countries from "./Countries";
 import { AppContext } from "../../App";
 
-const ShippingAddress = () => {
+const ShippingAddress = ({ submitted, setSubmitted, handleSubmitted }) => {
 	const { orderInfo, setOrderInfo } = useContext(AppContext);
 
-	const [shippingAddress, setShippingAddress] = useState(null);
+	// const [shippingAddress, setShippingAddress] = useState(null);
 	const [country, setCountry] = useState("Afghanistan");
 
 	const schema = yup.object().shape({
@@ -30,11 +30,11 @@ const ShippingAddress = () => {
 		state: yup
 			.string()
 			.required()
-			.matches(/^[A-Za-z]{4,}$/),
+			.matches(/^[A-Za-z]{2,}$/),
 		postalCode: yup
 			.string()
 			.required("Postal code is required")
-			.matches(/^[0-9]{3}$/),
+			.matches(/^[0-9]{3,7}$/),
 	});
 
 	const {
@@ -47,11 +47,11 @@ const ShippingAddress = () => {
 
 	const onSubmit = async (data) => {
 		data.country = country;
-		setShippingAddress(data);
+		// setShippingAddress(data);
 
 		setOrderInfo({ ...orderInfo, shippingOrderInfo: data });
 
-		console.log("Shipping Info: ", shippingAddress);
+		handleSubmitted();
 	};
 
 	return (
@@ -122,7 +122,7 @@ const ShippingAddress = () => {
 							<input
 								className={`checkout-input ${errors.postalCode && "error-input"}`}
 								type="text"
-								maxLength={3}
+								maxLength={7}
 								{...register("postalCode")}
 							/>
 						</div>

@@ -3,10 +3,10 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { AppContext } from "../../App";
-import formatCurrency from "../../utils/money";
 
 const Sidebar = () => {
-	const { setIsOrderPlaced, orderInfo, selectedMethod, subtotal } = useContext(AppContext);
+	const { isOrderPlaced, setIsOrderPlaced, orderInfo, selectedMethod, subtotal } =
+		useContext(AppContext);
 
 	const schema = yup.object().shape({
 		discount: yup.string(),
@@ -16,9 +16,9 @@ const Sidebar = () => {
 		resolver: yupResolver(schema),
 	});
 
-	const onSubmit = (data) => {};
+	const onSubmit = () => {};
 
-	const placeOrder = (data) => {
+	const placeOrder = () => {
 		if (
 			orderInfo.customerOrderInfo !== null &&
 			orderInfo.shippingOrderInfo !== null &&
@@ -57,7 +57,10 @@ const Sidebar = () => {
 				</div>
 			</div>
 
-			<div className="discounts">
+			<div
+				className="discounts"
+				style={{ display: isOrderPlaced && "none" }}
+			>
 				<label className="discounts-label">Discount Code</label>
 
 				<form
@@ -75,6 +78,7 @@ const Sidebar = () => {
 			<form
 				onSubmit={handleSubmit(placeOrder)}
 				className="checkout-form"
+				style={{ display: isOrderPlaced && "none" }}
 			>
 				<button className="place-order">Place Order</button>
 			</form>

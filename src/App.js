@@ -44,8 +44,8 @@ function App() {
 		customerOrderInfo: null,
 		shippingOrderInfo: null,
 		paymentOrderInfo: null,
-		orderItems: cartItems,
 	});
+
 	useEffect(() => {
 		// Calculate subtotal whenever cartItems change
 		calculateSubTotal();

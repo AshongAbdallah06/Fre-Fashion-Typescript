@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { AppContext } from "../../App";
 
-const CustomerInfo = () => {
+const CustomerInfo = ({ submitted, setSubmitted, handleSubmitted }) => {
 	const { orderInfo, setOrderInfo } = useContext(AppContext);
 
 	const schema = yup.object().shape({
@@ -23,6 +23,8 @@ const CustomerInfo = () => {
 	const onSubmit = (data) => {
 		setOrderInfo({ ...orderInfo, customerOrderInfo: data });
 		console.log(data);
+
+		handleSubmitted();
 	};
 	return (
 		<div className="wrapper">

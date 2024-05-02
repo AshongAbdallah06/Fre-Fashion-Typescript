@@ -1,24 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Label from "./Label";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { AppContext } from "../../App";
 
-const PaymentInfo = () => {
+const PaymentInfo = ({ submitted, setSubmitted, handleSubmitted }) => {
 	const { orderInfo, setOrderInfo } = useContext(AppContext);
-
-	const [paymentInfo, setPaymentInfo] = useState({
-		cardNumber: null,
-		expirationDate: null,
-		securityCode: null,
-		name: null,
-		streetAddress: null,
-		streetAddress2: null,
-		city: null,
-		state: null,
-		postalCode: null,
-	});
 
 	const schema = yup.object().shape({
 		cardNumber: yup
@@ -46,13 +34,8 @@ const PaymentInfo = () => {
 	});
 
 	const onSubmit = async (data) => {
-		setPaymentInfo({
-			cardNumber: data.cardNumber,
-			expirationDate: data.expirationDate,
-			securityCode: data.securityCode,
-		});
-
 		setOrderInfo({ ...orderInfo, paymentOrderInfo: data });
+		handleSubmitted();
 	};
 
 	return (
