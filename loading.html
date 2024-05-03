@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Document</title>
+	</head>
+	<style>
+		* {
+			margin: 0;
+		}
+		.content {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			height: 100vh;
+			position: relative;
+			background: rgb(33, 33, 39);
+		}
+		.big {
+			background-color: white;
+			width: 100px;
+			height: 100px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			z-index: 99;
+			animation: scaleBig 1s linear alternate infinite;
+		}
+		.circle {
+			background-color: rgb(33, 33, 39);
+			border-radius: 100%;
+			height: 40px;
+			width: 40px;
+			animation: scale 1s linear alternate infinite;
+		}
+		.absolute {
+			position: absolute;
+			width: 50px;
+			height: 50px;
+		}
+		.top-left {
+			left: 505px;
+			top: 205px;
+			animation: rotate 0.5s linear infinite;
+		}
+		@keyframes rotate {
+			0% {
+				transform: rotate(0deg);
+			}
+			100% {
+				transform: rotate(90deg);
+			}
+		}
+		.top-right {
+			animation: rotate 0.5s linear reverse infinite;
+			right: 502px;
+			top: 202px;
+		}
+		.bottom-left {
+			bottom: 202px;
+			left: 502px;
+			animation: rotate 0.5s linear reverse infinite;
+		}
+		.bottom-right {
+			bottom: 202px;
+			animation: rotate 0.5s linear infinite;
+			right: 502px;
+		}
+		.absolute-circle {
+			height: 20px;
+			width: 20px;
+			/* z-index: -2; */
+			animation: scale 0.5s linear alternate infinite;
+		}
+		@keyframes scale {
+			0% {
+				transform: scale(0);
+			}
+			100% {
+				transform: scale(2);
+			}
+		}
+		@keyframes scaleBig {
+			0% {
+				transform: scale(0);
+			}
+			100% {
+				transform: scale(1);
+			}
+		}
+	</style>
+	<body>
+		<div className="content">
+			<div className="top-left big absolute">
+				<div className="circle absolute-circle"></div>
+			</div>
+			<div className="top-right big absolute">
+				<div className="circle absolute-circle"></div>
+			</div>
+			<div className="bottom-left big absolute">
+				<div className="circle absolute-circle"></div>
+			</div>
+			<div className="bottom-right big absolute">
+				<div className="circle absolute-circle"></div>
+			</div>
+			<div className="big">
+				<div className="circle"></div>
+			</div>
+		</div>
+	</body>
+</html>

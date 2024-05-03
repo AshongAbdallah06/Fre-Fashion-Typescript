@@ -16,11 +16,17 @@ const Header = () => {
 
 			<nav className="top-banner">
 				<nav>
-					<img
-						src={logo}
-						alt="logo"
-						className="logo"
-					/>
+					<Link
+						to={"/"}
+						className="nav-link"
+						onClick={() => setCartDropdown(false)}
+					>
+						<img
+							src={logo}
+							alt="logo"
+							className="logo"
+						/>
+					</Link>
 				</nav>
 
 				<nav className="right-section">
@@ -63,6 +69,7 @@ const Header = () => {
 				<Link
 					to={"/"}
 					className="nav-link"
+					onClick={() => setCartDropdown(false)}
 				>
 					Home
 				</Link>
@@ -70,6 +77,7 @@ const Header = () => {
 				<Link
 					to={"/shop"}
 					className="nav-link"
+					onClick={() => setCartDropdown(false)}
 				>
 					Shop
 				</Link>
@@ -77,6 +85,7 @@ const Header = () => {
 				<Link
 					to={"/contact"}
 					className="nav-link"
+					onClick={() => setCartDropdown(false)}
 				>
 					Contact
 				</Link>

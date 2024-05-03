@@ -1,27 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Signup from "../home/Signup";
 import Heading from "../home/Heading";
 import Form from "./Form";
 import "../../styles/contact.css";
+import Loading from "../Loading";
 
 const Contact = ({ title = "Contact" }) => {
 	document.title = "Fre Fashion & Clothing | Contact";
 
+	const [loading, setLoading] = useState(false);
+
+	useEffect(() => {
+		setLoading(true);
+		const timer = setTimeout(() => {
+			setLoading(false);
+		}, 2000);
+
+		// Clear the timeout if the component unmounts
+		return () => clearTimeout(timer);
+	}, []);
+
 	return (
 		<div>
-			<div className="heading">
-				<h1>{title}</h1>
-			</div>
+			{loading && <Loading />}
 
-			<section className="contact section">
-				<Heading heading="Stay In Touch" />
+			{!loading && (
+				<>
+					<div className="heading">
+						<h1>{title}</h1>
+					</div>
 
-				<Form />
-			</section>
+					<section className="contact section">
+						<Heading heading="Stay In Touch" />
 
-			<section className="section">
-				<Signup />
-			</section>
+						<Form />
+					</section>
+
+					<section className="section">
+						<Signup />
+					</section>
+				</>
+			)}
 		</div>
 	);
 };

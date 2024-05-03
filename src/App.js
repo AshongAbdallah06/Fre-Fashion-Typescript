@@ -14,8 +14,9 @@ import Hats from "./components/shop/Hats";
 import Item from "./components/selected-item/Item";
 import Checkout from "./components/checkout/Checkout";
 import formatCurrency from "./utils/money";
-// import Login from "./components/login/Login";
+import Login from "./components/login/Login";
 import useFunctions from "./hooks/useFunctions";
+import Loading from "./components/Loading";
 
 export const AppContext = createContext();
 
@@ -84,7 +85,6 @@ function App() {
 
 	return (
 		<div className="App">
-			{/* <Login /> */}
 			<AppContext.Provider
 				value={{
 					title,
@@ -110,66 +110,75 @@ function App() {
 				}}
 			>
 				<Router>
-					<Header />
+					{/* <Login /> */}
+					{/* {loading && <Loading />} */}
 
-					<Routes>
-						<Route
-							path="/"
-							element={<Content />}
-						/>
-						<Route
-							path="/shop"
-							element={<Shop />}
-						/>
-						{product.name !== null && (
-							<>
-								<Route
-									path={`/shop/${product.name
-										.replaceAll(" ", "-")
-										.toLowerCase()}`}
-									element={
-										<Item
-											productName={product.name}
-											productImage={product.product_image}
-											productPrice={formatCurrency(product.price)}
-											productType={product.type}
-											productQuantity={product.quantity}
-										/>
-									}
-								/>
-							</>
-						)}
-						<Route
-							path="/shop/accessories"
-							element={<Accessories />}
-						/>
-						<Route
-							path="/shop/jewelry"
-							element={<Jewelry />}
-						/>
-						<Route
-							path="/shop/bags"
-							element={<Bags />}
-						/>
-						<Route
-							path="/shop/hats"
-							element={<Hats />}
-						/>
-						<Route
-							path="/contact"
-							element={<Contact />}
-						/>
-						<Route
-							path="/checkout"
-							element={<Checkout />}
-						/>
-						<Route
-							path="*"
-							element={<h1>404 PAGE CANNOT BE FOUND</h1>}
-						/>
-					</Routes>
+					{/* {!loading && ( */}
+					<>
+						<Header />
 
-					<Footer />
+						<Routes>
+							<Route
+								path="/"
+								element={<Content />}
+							/>
+							<Route
+								path="/shop"
+								element={<Shop />}
+							/>
+							{product.name !== null && (
+								<>
+									<Route
+										path={`/shop/${product.name
+											.replaceAll(" ", "-")
+											.toLowerCase()}`}
+										element={
+											<Item
+												productName={product.name}
+												productImage={product.product_image}
+												productPrice={formatCurrency(product.price)}
+												productType={product.type}
+												productQuantity={product.quantity}
+											/>
+										}
+									/>
+								</>
+							)}
+							<Route
+								path="/shop/accessories"
+								element={<Accessories />}
+							/>
+							<Route
+								path="/shop/jewelry"
+								element={<Jewelry />}
+							/>
+							<Route
+								path="/shop/bags"
+								element={<Bags />}
+							/>
+							<Route
+								path="/shop/hats"
+								element={<Hats />}
+							/>
+							<Route
+								path="/contact"
+								element={<Contact />}
+							/>
+							<Route
+								path="/checkout"
+								element={<Checkout />}
+							/>
+							<Route
+								path="*"
+								element={<h1>404 PAGE CANNOT BE FOUND</h1>}
+							/>
+						</Routes>
+						<Footer />
+					</>
+					{/* )} */}
+
+					{/* <Footer /> */}
+					{/* {!loading &&  */}
 				</Router>
 			</AppContext.Provider>
 		</div>
