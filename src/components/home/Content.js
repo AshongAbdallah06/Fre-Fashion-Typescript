@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Banner from "./Banner";
 import Categories from "./Categories";
 import FeaturesProducts from "./FeaturesProducts";
 import OurBrands from "./OurBrands";
 import Signup from "./Signup";
-import { AppContext } from "../../App";
+import Loading from "../Loading";
 
 const Content = () => {
 	const [loading, setLoading] = useState(false);
@@ -22,15 +22,21 @@ const Content = () => {
 
 	return (
 		<main>
-			<Banner />
+			{loading && <Loading />}
 
-			<Categories />
+			{!loading && (
+				<>
+					<Banner />
 
-			<FeaturesProducts />
+					<Categories />
 
-			<OurBrands />
+					<FeaturesProducts />
 
-			<Signup />
+					<OurBrands />
+
+					<Signup />
+				</>
+			)}
 		</main>
 	);
 };

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AppContext } from "../../App";
 
-const Sidebar = () => {
+const Sidebar = ({ loadingFunction }) => {
 	const { isOrderPlaced, setIsOrderPlaced, orderInfo, selectedMethod, subtotal } =
 		useContext(AppContext);
 
@@ -22,6 +22,7 @@ const Sidebar = () => {
 		) {
 			// No null fields
 			setIsOrderPlaced(true);
+			loadingFunction();
 		}
 	};
 

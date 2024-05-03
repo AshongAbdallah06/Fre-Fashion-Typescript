@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../../styles/item.css";
 import ItemAside from "./ItemAside";
 import ItemDescription from "./ItemDescription";
 import PurchaseForm from "./PurchaseForm";
+import Loading from "../Loading";
 
 const Item = ({
 	productName,
@@ -15,31 +16,53 @@ const Item = ({
 }) => {
 	document.title = title;
 
+	const [loading, setLoading] = useState(false);
+
+	const loadingFunction = () => {
+		setLoading(true);
+		const timer = setTimeout(() => {
+			setLoading(false);
+		}, 2000);
+
+		// Clear the timeout if the component unmounts
+		return () => clearTimeout(timer);
+	};
+
+	useEffect(() => {
+		loadingFunction();
+	}, []);
+
 	return (
 		<div>
-			<div className="heading">
-				<h1 className="product-title">{title}</h1>
-			</div>
+			{loading && <Loading />}
 
-			<section className="item section">
-				<ItemAside productImage={productImage} />
+			{!loading && (
+				<>
+					<div className="heading">
+						<h1 className="product-title">{title}</h1>
+					</div>
 
-				<div className="right">
-					<ItemDescription
-						productName={productName}
-						productPrice={productPrice}
-						productType={productType}
-					/>
+					<section className="item section">
+						<ItemAside productImage={productImage} />
 
-					<PurchaseForm
-						productName={productName}
-						productPrice={productPrice}
-						productImage={productImage}
-						productQuantity={productQuantity}
-						productId={productId}
-					/>
-				</div>
-			</section>
+						<div className="right">
+							<ItemDescription
+								productName={productName}
+								productPrice={productPrice}
+								productType={productType}
+							/>
+
+							<PurchaseForm
+								productName={productName}
+								productPrice={productPrice}
+								productImage={productImage}
+								productQuantity={productQuantity}
+								productId={productId}
+							/>
+						</div>
+					</section>
+				</>
+			)}
 		</div>
 	);
 };

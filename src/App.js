@@ -14,9 +14,8 @@ import Hats from "./components/shop/Hats";
 import Item from "./components/selected-item/Item";
 import Checkout from "./components/checkout/Checkout";
 import formatCurrency from "./utils/money";
-import Login from "./components/login/Login";
+// import Login from "./components/login/Login";
 import useFunctions from "./hooks/useFunctions";
-import Loading from "./components/Loading";
 
 export const AppContext = createContext();
 
@@ -110,10 +109,6 @@ function App() {
 				}}
 			>
 				<Router>
-					{/* <Login /> */}
-					{/* {loading && <Loading />} */}
-
-					{/* {!loading && ( */}
 					<>
 						<Header />
 
@@ -175,10 +170,6 @@ function App() {
 						</Routes>
 						<Footer />
 					</>
-					{/* )} */}
-
-					{/* <Footer /> */}
-					{/* {!loading &&  */}
 				</Router>
 			</AppContext.Provider>
 		</div>
