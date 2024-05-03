@@ -17,7 +17,7 @@ import Loading from "../Loading";
 
 const Checkout = ({ title = "Checkout" }) => {
 	const { isOrderPlaced } = useContext(AppContext);
-	const [loading, setLoading] = useState(true);
+	// const [loading, setLoading] = useState(true);
 
 	document.title = "Fre Fashion & Clothing | Checkout";
 
@@ -33,15 +33,15 @@ const Checkout = ({ title = "Checkout" }) => {
 		}, 2000);
 	};
 
-	useEffect(() => {
-		// Simulate loading by setting loading to false after 3 seconds
-		const timer = setTimeout(() => {
-			// setLoading(false);
-		}, 3000);
+	// useEffect(() => {
+	// 	// Simulate loading by setting loading to false after 3 seconds
+	// 	const timer = setTimeout(() => {
+	// 		// setLoading(false);
+	// 	}, 3000);
 
-		// Clear the timeout if the component unmounts
-		return () => clearTimeout(timer);
-	}, []);
+	// 	// Clear the timeout if the component unmounts
+	// 	return () => clearTimeout(timer);
+	// }, []);
 
 	return (
 		<>
@@ -49,103 +49,101 @@ const Checkout = ({ title = "Checkout" }) => {
 				<Loading />
 			)} */}
 
-			{!loading && (
-				<div>
-					<div className="heading">
-						<h1>{isOrderPlaced ? "Your order has been placed" : title}</h1>
-					</div>
-
-					<section
-						className={`submitted ${submitted && "submitted-animation"}`}
-						style={{ opacity: submitted && 1 }}
-					>
-						Submitted
-					</section>
-
-					<section className="section">
-						<div className="checkout-form form-container">
-							<div className="layout-main">
-								{isOrderPlaced ? (
-									<>
-										{/* Customer Information */}
-										<div className="wrapper">
-											<div className="block-header">
-												<h4>Customer Information</h4>
-											</div>
-
-											<fieldset className="block-content">
-												<div className="checkout-row">
-													<CustomerEmail />
-
-													<ShippingBillingAddress
-														label={"Shipping Address"}
-													/>
-												</div>
-											</fieldset>
-										</div>
-
-										{/* Shipping Method Information */}
-										<ShippingMethodInfo />
-
-										{/* Payment Information */}
-										<div className="wrapper">
-											<div className="block-header">
-												<h4>Payment Information</h4>
-											</div>
-
-											<fieldset className="block-content">
-												<div className="checkout-row">
-													<CardInfo />
-
-													<ShippingBillingAddress
-														label={"Billing Address"}
-													/>
-												</div>
-											</fieldset>
-										</div>
-
-										{/* Items in the cart */}
-										<Items />
-									</>
-								) : (
-									<>
-										<div className="buttons">
-											<PaypalButton />
-											<ApplePayButton />
-										</div>
-
-										<CustomerInfo
-											submitted={submitted}
-											setSubmitted={setSubmitted}
-											handleSubmitted={handleSubmitted}
-										/>
-
-										<ShippingAddress
-											submitted={submitted}
-											setSubmitted={setSubmitted}
-											handleSubmitted={handleSubmitted}
-										/>
-
-										<ShippingMethod />
-
-										<PaymentInfo
-											submitted={submitted}
-											setSubmitted={setSubmitted}
-											handleSubmitted={handleSubmitted}
-										/>
-
-										{/* Items in the cart */}
-										<Items />
-									</>
-								)}
-							</div>
-
-							{/* Order Summary */}
-							<Sidebar />
-						</div>
-					</section>
+			{/* {!loadin/g && ( */}
+			<div>
+				<div className="heading">
+					<h1>{isOrderPlaced ? "Your order has been placed" : title}</h1>
 				</div>
-			)}
+
+				<section
+					className={`submitted ${submitted && "submitted-animation"}`}
+					style={{ opacity: submitted && 1 }}
+				>
+					Submitted
+				</section>
+
+				<section className="section">
+					<div className="checkout-form form-container">
+						<div className="layout-main">
+							{isOrderPlaced ? (
+								<>
+									{/* Customer Information */}
+									<div className="wrapper">
+										<div className="block-header">
+											<h4>Customer Information</h4>
+										</div>
+
+										<fieldset className="block-content">
+											<div className="checkout-row">
+												<CustomerEmail />
+
+												<ShippingBillingAddress
+													label={"Shipping Address"}
+												/>
+											</div>
+										</fieldset>
+									</div>
+
+									{/* Shipping Method Information */}
+									<ShippingMethodInfo />
+
+									{/* Payment Information */}
+									<div className="wrapper">
+										<div className="block-header">
+											<h4>Payment Information</h4>
+										</div>
+
+										<fieldset className="block-content">
+											<div className="checkout-row">
+												<CardInfo />
+
+												<ShippingBillingAddress label={"Billing Address"} />
+											</div>
+										</fieldset>
+									</div>
+
+									{/* Items in the cart */}
+									<Items />
+								</>
+							) : (
+								<>
+									<div className="buttons">
+										<PaypalButton />
+										<ApplePayButton />
+									</div>
+
+									<CustomerInfo
+										submitted={submitted}
+										setSubmitted={setSubmitted}
+										handleSubmitted={handleSubmitted}
+									/>
+
+									<ShippingAddress
+										submitted={submitted}
+										setSubmitted={setSubmitted}
+										handleSubmitted={handleSubmitted}
+									/>
+
+									<ShippingMethod />
+
+									<PaymentInfo
+										submitted={submitted}
+										setSubmitted={setSubmitted}
+										handleSubmitted={handleSubmitted}
+									/>
+
+									{/* Items in the cart */}
+									<Items />
+								</>
+							)}
+						</div>
+
+						{/* Order Summary */}
+						<Sidebar />
+					</div>
+				</section>
+			</div>
+			{/* )} */}
 			{/* // )} */}
 		</>
 	);
