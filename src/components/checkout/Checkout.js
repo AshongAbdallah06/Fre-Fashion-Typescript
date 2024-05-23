@@ -18,37 +18,16 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 
 const Checkout = ({ title = "Checkout" }) => {
-	const { isOrderPlaced } = useContext(AppContext);
+	const { setOrderInfo, selectedMethod, isOrderPlaced } = useContext(AppContext);
 
 	document.title = "Fre Fashion & Clothing | Checkout";
 
 	const [submitted, setSubmitted] = useState(false);
+	const [showButton, setShowButton] = useState(false);
 
-	const handleSubmitted = () => {
-		// Set submitted to true
-		setSubmitted(true);
-
-		// Set submitted to false after 2 seconds
-		setTimeout(() => {
-			setSubmitted(false);
-		}, 2000);
-	};
-
+	// Data excluding selectedMethod
+	const [orderExcludingSelectedMethod, setOrderExcludingSelectedMethod] = useState(null);
 	const [loading, setLoading] = useState(false);
-
-	const loadingFunction = () => {
-		setLoading(true);
-		const timer = setTimeout(() => {
-			setLoading(false);
-		}, 2000);
-
-		// Clear the timeout if the component unmounts
-		return () => clearTimeout(timer);
-	};
-
-	useEffect(() => {
-		loadingFunction();
-	}, []);
 
 	const schema = yup.object().shape({
 		// Customer Info Schema
@@ -94,11 +73,6 @@ const Checkout = ({ title = "Checkout" }) => {
 			.matches(/^[0-9]{3}$/),
 	});
 
-	const { setOrderInfo, selectedMethod } = useContext(AppContext);
-
-	// Data excluding selectedMethod
-	const [orderExcludingSelectedMethod, setOrderExcludingSelectedMethod] = useState(null);
-
 	const {
 		register,
 		handleSubmit,
@@ -110,9 +84,36 @@ const Checkout = ({ title = "Checkout" }) => {
 	const onSubmit = (data) => {
 		setOrderInfo({ ...data, selectedMethod });
 		setOrderExcludingSelectedMethod(data);
-		console.log("Order", orderExcludingSelectedMethod);
+
 		handleSubmitted();
 	};
+
+	const handleSubmitted = () => {
+		// Set submitted to true
+		setSubmitted(true);
+
+		// Show the button
+		setShowButton(true);
+
+		// Set submitted to false after 2 seconds
+		setTimeout(() => {
+			setSubmitted(false);
+		}, 2000);
+	};
+
+	const loadingFunction = () => {
+		setLoading(true);
+		const timer = setTimeout(() => {
+			setLoading(false);
+		}, 2000);
+
+		// Clear the timeout if the component unmounts
+		return () => clearTimeout(timer);
+	};
+
+	useEffect(() => {
+		loadingFunction();
+	}, []);
 
 	return (
 		<div>
@@ -197,6 +198,7 @@ const Checkout = ({ title = "Checkout" }) => {
 							<Sidebar
 								orderExcludingSelectedMethod={orderExcludingSelectedMethod}
 								loadingFunction={loadingFunction}
+								showButton={showButton}
 							/>
 						</div>
 					</section>

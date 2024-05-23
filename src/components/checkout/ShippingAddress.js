@@ -71,7 +71,6 @@ const ShippingAddress = ({ register, errors }) => {
 							type="text"
 							maxLength={7}
 							{...register("postalCode")}
-							value={233}
 						/>
 					</div>
 				</div>

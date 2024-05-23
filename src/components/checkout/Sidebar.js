@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../App";
 
-const Sidebar = ({ loadingFunction, orderExcludingSelectedMethod }) => {
+const Sidebar = ({ loadingFunction, orderExcludingSelectedMethod, showButton }) => {
 	const { isOrderPlaced, setIsOrderPlaced, orderInfo, selectedMethod, subtotal } =
 		useContext(AppContext);
 
@@ -61,12 +61,14 @@ const Sidebar = ({ loadingFunction, orderExcludingSelectedMethod }) => {
 				</div>
 			</div>
 
-			<button
-				onClick={placeOrder}
-				className="place-order"
-			>
-				Place Order
-			</button>
+			{showButton && (
+				<button
+					onClick={placeOrder}
+					className="place-order"
+				>
+					Place Order
+				</button>
+			)}
 		</div>
 	);
 };
