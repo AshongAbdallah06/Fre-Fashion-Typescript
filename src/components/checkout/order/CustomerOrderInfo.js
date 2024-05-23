@@ -16,7 +16,7 @@ const CustomerOrderInfo = () => {
 				<div className="checkout-row">
 					<div className="checkout-column">
 						<Label label={"Email"} />
-						<p>{orderInfo.customerOrderInfo.email}</p>
+						<p>{orderInfo.email}</p>
 					</div>
 
 					<ShippingBillingAddress label={"Shipping Address"} />

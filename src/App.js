@@ -24,6 +24,7 @@ function App() {
 	const [selectedMethod, setSelectedMethod] = useState({
 		name: "flat-rate",
 		amount: formatCurrency(1890),
+		description: "Standard flat rate for all shipments.",
 	});
 
 	const {
@@ -40,15 +41,7 @@ function App() {
 	const title = "";
 	const heading = "";
 
-	const [orderInfo, setOrderInfo] = useState({
-		customerOrderInfo: null,
-		shippingOrderInfo: null,
-		shippingMethodInfo: {
-			name: "flat-rate",
-			description: "Standard flat rate for all shipments",
-		},
-		paymentOrderInfo: null,
-	});
+	const [orderInfo, setOrderInfo] = useState();
 
 	useEffect(() => {
 		// Calculate subtotal whenever cartItems change

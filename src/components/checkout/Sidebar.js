@@ -14,15 +14,12 @@ const Sidebar = ({ loadingFunction }) => {
 
 	const placeOrder = () => {
 		// If all the fields required has been filled then place order
-		if (
-			orderInfo.customerOrderInfo !== null &&
-			orderInfo.shippingOrderInfo !== null &&
-			orderInfo.paymentOrderInfo !== null
-			// cartItems.length === 0
-		) {
+		if (orderInfo !== null) {
 			// No null fields
 			setIsOrderPlaced(true);
 			loadingFunction();
+		} else {
+			alert("Please fill out all the forms");
 		}
 	};
 
@@ -39,14 +36,22 @@ const Sidebar = ({ loadingFunction }) => {
 				</div>
 
 				<div className="summary-line-item">
-					<div style={{ textTransform: "capitalize" }}>{selectedMethod.name}:</div>
-					<div className="total-price">$ {selectedMethod.amount} USD</div>
+					<div style={{ textTransform: "capitalize" }}>
+						{selectedMethod.name && selectedMethod.name}:
+					</div>
+					<div className="total-price">
+						$ {selectedMethod.amount && selectedMethod.amount} USD
+					</div>
 				</div>
 
 				<div className="summary-line-item">
 					<div>Total:</div>
 					<div className="text-block-2">
-						$ {Number(subtotal) + Number(selectedMethod.amount) + "0"} USD
+						${" "}
+						{Number(subtotal) +
+							Number(selectedMethod.amount && selectedMethod.amount) +
+							"0"}{" "}
+						USD
 					</div>
 				</div>
 			</div>

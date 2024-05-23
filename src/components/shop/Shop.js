@@ -2,8 +2,7 @@ import OurBrands from "../home/OurBrands";
 import Aside from "./Aside";
 import ShopItems from "./ShopItems";
 import "../../styles/shop.css";
-import { useContext, useEffect, useState } from "react";
-import { AppContext } from "../../App";
+import { useEffect, useState } from "react";
 import Loading from "../Loading";
 
 const Shop = ({ title = "Shop" }) => {

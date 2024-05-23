@@ -14,9 +14,9 @@ const CardInfo = () => {
 					marginBottom: "0.5rem",
 				}}
 			>
-				{orderInfo.paymentOrderInfo.cardNumber}
+				{orderInfo.cardNumber}
 			</p>
-			<p>{orderInfo.paymentOrderInfo.expirationDate}</p>
+			<p>{orderInfo.expirationDate}</p>
 		</div>
 	);
 };

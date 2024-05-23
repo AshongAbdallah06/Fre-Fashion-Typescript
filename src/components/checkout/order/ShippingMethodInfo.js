@@ -14,8 +14,8 @@ const ShippingAddressInfo = () => {
 			<fieldset className="block-content">
 				<div className="checkout-row">
 					<div className="checkout-column">
-						<Label label={orderInfo.shippingMethodInfo.name} />
-						<p>{orderInfo.shippingMethodInfo.description}</p>
+						<Label label={orderInfo.selectedMethod.name} />
+						<p>{orderInfo.selectedMethod.description}</p>
 					</div>
 				</div>
 			</fieldset>

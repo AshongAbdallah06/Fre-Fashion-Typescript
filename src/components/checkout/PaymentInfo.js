@@ -1,43 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import Label from "./Label";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { AppContext } from "../../App";
 
-const PaymentInfo = ({ submitted, setSubmitted, handleSubmitted }) => {
-	const { orderInfo, setOrderInfo } = useContext(AppContext);
-
-	const schema = yup.object().shape({
-		cardNumber: yup
-			.string()
-			.required("Your card number is required")
-			.matches(/^[0-9 -]+$/, "Please enter a valid card number")
-			.min(8, "Card number must be at least 8 characters")
-			.max(19, "Card number should not be more than 19 characters"),
-		expirationDate: yup
-			.string()
-			.required()
-			.matches(/^(0[1-9]|1[0-2])\/[0-9]{2}$/),
-		securityCode: yup
-			.string()
-			.required()
-			.matches(/^[0-9]{3}$/),
-	});
-
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm({
-		resolver: yupResolver(schema),
-	});
-
-	const onSubmit = async (data) => {
-		setOrderInfo({ ...orderInfo, paymentOrderInfo: data });
-		handleSubmitted();
-	};
-
+const PaymentInfo = ({ register, errors }) => {
 	return (
 		<div className="wrapper">
 			<div className="block-header">
@@ -46,50 +10,44 @@ const PaymentInfo = ({ submitted, setSubmitted, handleSubmitted }) => {
 			</div>
 
 			<fieldset className="block-content">
-				<form
-					onSubmit={handleSubmit(onSubmit)}
-					className="checkout-form"
-				>
-					<Label label={"Card Number *"} />
-					{errors.cardNumber && (
-						<span className="error">{errors.cardNumber.message}</span>
-					)}
+				<Label label={"Card Number *"} />
+				{errors.cardNumber && <span className="error">{errors.cardNumber.message}</span>}
 
-					<input
-						className={`checkout-input ${errors.cardNumber && "error-input"}`}
-						type="text"
-						placeholder="1234567890"
-						{...register("cardNumber")}
-					/>
+				<input
+					className={`checkout-input ${errors.cardNumber && "error-input"}`}
+					type="text"
+					placeholder="1234567890"
+					{...register("cardNumber")}
+					value="1234567890"
+				/>
 
-					<div className="checkout-row">
-						<div className="checkout-column">
-							<Label label={"Expiration date *"} />
-							<input
-								className={`checkout-input ${
-									errors.expirationDate && "error-input"
-								}`}
-								type="text"
-								maxLength={5}
-								placeholder="MM/YY"
-								{...register("expirationDate")}
-							/>
-						</div>
-
-						<div className="checkout-column">
-							<Label label={"Security Code *"} />
-							<input
-								className={`checkout-input ${errors.securityCode && "error-input"}`}
-								type="text"
-								maxLength={3}
-								placeholder="000"
-								{...register("securityCode")}
-							/>
-						</div>
+				<div className="checkout-row">
+					<div className="checkout-column">
+						<Label label={"Expiration date *"} />
+						<input
+							className={`checkout-input ${errors.expirationDate && "error-input"}`}
+							type="text"
+							maxLength={5}
+							placeholder="MM/YY"
+							{...register("expirationDate")}
+							value="02/32"
+						/>
 					</div>
 
-					<button className="submit">Submit</button>
-				</form>
+					<div className="checkout-column">
+						<Label label={"Security Code *"} />
+						<input
+							className={`checkout-input ${errors.securityCode && "error-input"}`}
+							type="text"
+							maxLength={3}
+							placeholder="000"
+							{...register("securityCode")}
+							value="220"
+						/>
+					</div>
+				</div>
+
+				<button className="submit">Submit</button>
 			</fieldset>
 		</div>
 	);

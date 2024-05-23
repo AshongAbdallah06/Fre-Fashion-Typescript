@@ -8,13 +8,12 @@ const ShippingBillingAddress = ({ label }) => {
 	return (
 		<div className="checkout-column">
 			<Label label={label} />
-			<p className="details">{orderInfo.shippingOrderInfo.name}</p>
-			<p className="details">{orderInfo.shippingOrderInfo.streetAddress}</p>
+			<p className="details">{orderInfo.name}</p>
+			<p className="details">{orderInfo.streetAddress}</p>
 			<p className="details">
-				{orderInfo.shippingOrderInfo.city} {orderInfo.shippingOrderInfo.state}{" "}
-				{orderInfo.shippingOrderInfo.postalCode}{" "}
+				{orderInfo.city} {orderInfo.state} {orderInfo.postalCode}{" "}
 			</p>
-			<p className="details">{orderInfo.shippingOrderInfo.country}</p>
+			<p className="details">{orderInfo.country}</p>
 		</div>
 	);
 };
