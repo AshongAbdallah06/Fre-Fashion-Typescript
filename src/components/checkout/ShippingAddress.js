@@ -22,7 +22,6 @@ const ShippingAddress = ({ register, errors }) => {
 						className={`checkout-input ${errors.name && "error-input"}`}
 						type="text"
 						{...register("name")}
-						value="Ashong"
 					/>
 				</div>
 
@@ -36,13 +35,11 @@ const ShippingAddress = ({ register, errors }) => {
 						className={`checkout-input ${errors.streetAddress && "error-input"}`}
 						type="text"
 						{...register("streetAddress")}
-						value="39 Nuumo Yat street"
 					/>
 					<input
 						className="checkout-input"
 						type="text"
 						{...register("streetAddress2")}
-						value="Ashong"
 					/>
 				</div>
 
@@ -54,7 +51,6 @@ const ShippingAddress = ({ register, errors }) => {
 							className={`checkout-input ${errors.city && "error-input"}`}
 							type="text"
 							{...register("city")}
-							value="Accra"
 						/>
 					</div>
 
@@ -65,7 +61,6 @@ const ShippingAddress = ({ register, errors }) => {
 							className={`checkout-input ${errors.state && "error-input"}`}
 							type="text"
 							{...register("state")}
-							value="KM"
 						/>
 					</div>
 

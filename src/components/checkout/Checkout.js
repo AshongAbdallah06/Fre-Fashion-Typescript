@@ -97,6 +97,9 @@ const Checkout = ({ title = "Checkout" }) => {
 
 	const { setOrderInfo, selectedMethod } = useContext(AppContext);
 
+	// Data excluding selectedMethod
+	const [orderExcludingSelectedMethod, setOrderExcludingSelectedMethod] = useState(null);
+
 	const {
 		register,
 		handleSubmit,
@@ -107,6 +110,8 @@ const Checkout = ({ title = "Checkout" }) => {
 
 	const onSubmit = (data) => {
 		setOrderInfo({ ...data, selectedMethod });
+		setOrderExcludingSelectedMethod(data);
+		console.log("Order", orderExcludingSelectedMethod);
 		handleSubmitted();
 	};
 
@@ -190,7 +195,10 @@ const Checkout = ({ title = "Checkout" }) => {
 							</div>
 
 							{/* Order Summary */}
-							<Sidebar loadingFunction={loadingFunction} />
+							<Sidebar
+								orderExcludingSelectedMethod={orderExcludingSelectedMethod}
+								loadingFunction={loadingFunction}
+							/>
 						</div>
 					</section>
 				</>

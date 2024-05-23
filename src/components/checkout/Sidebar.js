@@ -1,27 +1,27 @@
 import React, { useContext } from "react";
-import { useForm } from "react-hook-form";
 import { AppContext } from "../../App";
 
-const Sidebar = ({ loadingFunction }) => {
+const Sidebar = ({ loadingFunction, orderExcludingSelectedMethod }) => {
 	const { isOrderPlaced, setIsOrderPlaced, orderInfo, selectedMethod, subtotal } =
 		useContext(AppContext);
 
-	const { handleSubmit } = useForm();
-
-	const onSubmit = () => {
-		// Prevent Default behavior of the form
-	};
+	// const { handleSubmit } = useForm();
 
 	const placeOrder = () => {
 		// If all the fields required has been filled then place order
-		if (orderInfo !== null) {
+		if (orderInfo.selectedMethod !== null && orderExcludingSelectedMethod !== null) {
 			// No null fields
 			setIsOrderPlaced(true);
 			loadingFunction();
 		} else {
-			alert("Please fill out all the forms");
+			alert("Please fill out the fields");
 		}
 	};
+
+	// const onSubmit = () => {
+	// 	// Prevent Default behavior of the form
+	// 	placeOrder();
+	// };
 
 	return (
 		<div className="layout-sidebar">
@@ -62,22 +62,24 @@ const Sidebar = ({ loadingFunction }) => {
 			>
 				<label className="discounts-label">Discount Code</label>
 
-				<form
-					onSubmit={handleSubmit(onSubmit)}
-					className="checkout-form flex"
-				>
+				<div className="checkout-form flex">
 					<input className="discounts-input" />
 					<button className="discounts-button">Apply</button>
-				</form>
+				</div>
 			</div>
 
-			<form
+			{/* <form
 				onSubmit={handleSubmit(placeOrder)}
 				className="checkout-form"
 				style={{ display: isOrderPlaced && "none" }}
+			> */}
+			<button
+				onClick={placeOrder}
+				className="place-order"
 			>
-				<button className="place-order">Place Order</button>
-			</form>
+				Place Order
+			</button>
+			{/* </form> */}
 		</div>
 	);
 };

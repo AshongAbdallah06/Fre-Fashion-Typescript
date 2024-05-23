@@ -1,12 +1,7 @@
 import React, { useContext, useState } from "react";
 import { AppContext } from "../../App";
 
-const PurchaseForm = ({
-	productName,
-	productPrice,
-	productImage,
-	productId,
-}) => {
+const PurchaseForm = ({ productName, productPrice, productImage, productId }) => {
 	const { handleAddItem, itemQuantity, setItemQuantity, setCartDropdown } =
 		useContext(AppContext);
 

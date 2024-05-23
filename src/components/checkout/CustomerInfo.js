@@ -23,7 +23,6 @@ const CustomerInfo = ({ register, errors }) => {
 					type="email"
 					className={`checkout-input ${errors.email && "error-input"}`}
 					{...register("email")}
-					value="sddsadsds@jsjjd.com"
 				/>
 			</fieldset>
 		</div>

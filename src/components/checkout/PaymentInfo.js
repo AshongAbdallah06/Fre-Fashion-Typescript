@@ -18,7 +18,6 @@ const PaymentInfo = ({ register, errors }) => {
 					type="text"
 					placeholder="1234567890"
 					{...register("cardNumber")}
-					value="1234567890"
 				/>
 
 				<div className="checkout-row">
@@ -30,7 +29,6 @@ const PaymentInfo = ({ register, errors }) => {
 							maxLength={5}
 							placeholder="MM/YY"
 							{...register("expirationDate")}
-							value="02/32"
 						/>
 					</div>
 
@@ -42,7 +40,6 @@ const PaymentInfo = ({ register, errors }) => {
 							maxLength={3}
 							placeholder="000"
 							{...register("securityCode")}
-							value="220"
 						/>
 					</div>
 				</div>
