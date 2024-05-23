@@ -5,8 +5,6 @@ const Sidebar = ({ loadingFunction, orderExcludingSelectedMethod }) => {
 	const { isOrderPlaced, setIsOrderPlaced, orderInfo, selectedMethod, subtotal } =
 		useContext(AppContext);
 
-	// const { handleSubmit } = useForm();
-
 	const placeOrder = () => {
 		// If all the fields required has been filled then place order
 		if (orderInfo.selectedMethod !== null && orderExcludingSelectedMethod !== null) {
@@ -17,11 +15,6 @@ const Sidebar = ({ loadingFunction, orderExcludingSelectedMethod }) => {
 			alert("Please fill out the fields");
 		}
 	};
-
-	// const onSubmit = () => {
-	// 	// Prevent Default behavior of the form
-	// 	placeOrder();
-	// };
 
 	return (
 		<div className="layout-sidebar">
@@ -68,18 +61,12 @@ const Sidebar = ({ loadingFunction, orderExcludingSelectedMethod }) => {
 				</div>
 			</div>
 
-			{/* <form
-				onSubmit={handleSubmit(placeOrder)}
-				className="checkout-form"
-				style={{ display: isOrderPlaced && "none" }}
-			> */}
 			<button
 				onClick={placeOrder}
 				className="place-order"
 			>
 				Place Order
 			</button>
-			{/* </form> */}
 		</div>
 	);
 };

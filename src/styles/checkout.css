@@ -333,7 +333,6 @@ input[type="checkbox"] {
 .absolute-circle {
 	height: 20px;
 	width: 20px;
-	/* z-index: -2; */
 	animation: scale 0.5s linear alternate infinite;
 }
 @keyframes scale {

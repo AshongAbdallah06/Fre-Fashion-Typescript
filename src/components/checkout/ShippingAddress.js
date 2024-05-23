@@ -3,7 +3,6 @@ import Label from "./Label";
 import Countries from "./Countries";
 
 const ShippingAddress = ({ register, errors }) => {
-	// const [shippingAddress, setShippingAddress] = useState(null);
 	const [country, setCountry] = useState("Afghanistan");
 
 	return (

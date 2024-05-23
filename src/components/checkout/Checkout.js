@@ -19,7 +19,6 @@ import { useForm } from "react-hook-form";
 
 const Checkout = ({ title = "Checkout" }) => {
 	const { isOrderPlaced } = useContext(AppContext);
-	// const [loading, setLoading] = useState(true);
 
 	document.title = "Fre Fashion & Clothing | Checkout";
 

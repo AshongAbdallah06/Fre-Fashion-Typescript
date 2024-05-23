@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import Loading from "../Loading";
 
 const Shop = ({ title = "Shop" }) => {
-	// const { loading, setLoading } = useContext(AppContext);
 	document.title = "Fre Fashion & Clothing | Shop";
 	const [loading, setLoading] = useState(false);
 

@@ -1,13 +1,7 @@
 import React from "react";
 import Label from "./Label";
-// import { useForm } from "react-hook-form";
-// import { yupResolver } from "@hookform/resolvers/yup";
-// import * as yup from "yup";
-// import { AppContext } from "../../App";
 
 const CustomerInfo = ({ register, errors }) => {
-	// const { orderInfo, setOrderInfo } = useContext(AppContext);
-
 	return (
 		<div className="wrapper">
 			<div className="block-header">

@@ -31,7 +31,6 @@ const Form = () => {
 				name="Message"
 				placeholder="Enter your message"
 				id="Message"
-				// style="height: 120px;"
 			></textarea>
 
 			<button className="submit-button send-message">Send Message</button>
